@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://source.unsplash.com">
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="preload" as="image" href="https://source.unsplash.com/1600x900/?ai,technology">
-<title>coderless | Value First. Built with AI.</title>
+<title>coderless inc. | Value First. Built with AI.</title>
   <meta name="description" content="AIの潜在能力を引き出し、身近な価値へと転換する。coderlessは、価値基点でAIと人の協働を設計し、戦略から実装までを一気通貫で支援します。" />
   <meta name="color-scheme" content="dark light">
   <meta property="og:title" content="coderless inc. | Value First. Built with AI." />
@@ -14,7 +14,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.coderless.co.jp/" />
   <meta property="og:image" content="https://www.coderless.co.jp/assets/ogp.png" />
-  <meta property="og:image:alt" content="coderless | Value First. Built with AI." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://www.coderless.co.jp/">
   <!-- 画像は後日差し替え。運用を軽くするため単一HTML。 -->
   <style>
     /* ===== CSS VARIABLES ===== */
@@ -78,6 +79,7 @@
       padding: 8px 12px; border-radius: 8px;
     }
     .skip-link:focus { left: 8px; top: 8px; z-index: 9999; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
     /* ===== HEADER ===== */
     header {
@@ -112,6 +114,9 @@
 
     /* ---- Nav ---- */
     nav ul { list-style: none; display: flex; gap: clamp(12px, 2vw, 28px); padding: 0; margin: 0; }
+    .menu-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; border-radius: 10px; border: 1px solid var(--border); background: #12121a; box-shadow: 0 6px 16px rgba(0,0,0,0.35); }
+    .icon-bars rect { fill: #e9ebf2; }
+    .icon-x path { stroke: #e9ebf2; }
     nav a { color: var(--muted); font-weight: 600; font-size: 14px; opacity: 0.95; }
     nav a:hover { color: var(--text); }
 
@@ -139,7 +144,7 @@
       box-shadow: 0 10px 30px var(--shadow);
       overflow: hidden; position: relative; min-height: 420px;
     }
-    /* シンプルなビジュアル */
+    /* シンプルな(仮)ビジュアル */
     .sample-visual::before, .sample-visual::after {
       content: ""; position: absolute; inset: 0;
       background: radial-gradient(500px 220px at 20% 30%, rgba(255,255,255,0.15), transparent 60%),
@@ -189,12 +194,36 @@
       color: #e9ebf2;
     }
     @media (max-width: 960px) {
-      .hero-grid { grid-template-columns: 1fr; }
+      /* ナビのモバイル表示 */
+      .nav-toggle { display: inline-flex; }
+      .primary-nav { position: absolute; top: calc(100% + 8px); left: 12px; right: 12px; background: color-mix(in oklab, var(--bg-elev) 95%, transparent); border: 1px solid var(--border); border-radius: 12px; padding: 12px; box-shadow: 0 14px 36px rgba(0,0,0,0.5); transform-origin: top; transform: scaleY(0.98); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .18s ease, transform .18s ease, visibility .18s; }
+      .primary-nav ul { flex-direction: column; gap: 12px; }
+      [data-nav-open="true"] .primary-nav { transform: scaleY(1); opacity: 1; visibility: visible; pointer-events: auto; }
+      .nav-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.35); }
+      .nav-backdrop[hidden] { display: none; }
+
+      /* スマホ時：カード類は折り返し（1カラム） */
+      .cards { display: grid; grid-template-columns: 1fr; gap: clamp(16px, 3vw, 22px); }
+      .principles { display: grid; grid-template-columns: 1fr; gap: 16px; }
+      .company-grid { display: grid; grid-template-columns: 1fr; gap: 22px; }
+    }
       .cards { grid-template-columns: 1fr; }
       .principles { grid-template-columns: 1fr; }
       .company-grid { grid-template-columns: 1fr; }
+      nav { position: relative; }
       nav ul { display: none; }
-      nav.is-open ul { display: flex; }
+      nav.is-open ul {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: color-mix(in oklab, var(--bg-elev) 92%, transparent);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px;
+        box-shadow: 0 14px 36px rgba(0,0,0,0.5);
+      }
       .menu-btn { display: inline-flex; }
     }
 
@@ -202,10 +231,11 @@
     .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.2vw, 22px); }
     .card {
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015)) padding-box,
-                  linear-gradient(90deg, rgba(0,200,255,0.35), rgba(122,0,255,0.35)) border-box;
+                  linear-gradient(90deg, rgba(0,200,255,0.65), rgba(122,0,255,0.65)) border-box;
       border: 1px solid transparent; border-radius: var(--radius-lg);
       padding: 20px; box-shadow: 0 10px 24px var(--shadow);
       transition: transform .2s ease, box-shadow .2s ease;
+      color: var(--text);
     }
     .card:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,0.45); }
     .card h3 { margin-top: 0; font-size: 18px; }
@@ -220,8 +250,13 @@
     /* ===== PRINCIPLES ===== */
     .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .principle { position: relative; border-radius: var(--radius-lg); padding: 18px; }
-    .principle.invert { background: #f7f8fb; color: #0b0b10; border: 1px solid #e4e6ee; box-shadow: 0 14px 40px rgba(0,0,0,0.20); }
-    .principle.invert::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; border-top-left-radius: inherit; border-top-right-radius: inherit; background: linear-gradient(90deg, var(--accent0), var(--accent1)); }
+    .principle.invert { position: relative; overflow: hidden;
+    background:
+      linear-gradient(90deg, var(--accent0), var(--accent1)) 0 0 / 100% 4px no-repeat,
+      #f7f8fb;
+    color: #0b0b10; border: 1px solid #e4e6ee; border-radius: var(--radius-lg);
+    box-shadow: 0 14px 40px rgba(0,0,0,0.20); }
+    /* top bar moved to background layer on .principle.invert to avoid 1-2px misalignment */
     .kicker { color: #5d6272; text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; font-weight: 800; }/* ===== PRINCIPLES ===== */
     .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .principle { background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px; }
@@ -258,20 +293,55 @@
     /* 交互のセクション濃淡 */
     .section-alt { background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent); }
 
-    /* ===== RESPONSIVE ===== */
+    /* === Accessible Responsive Nav (from scratch) === */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .site-header { position: sticky; top: 0; z-index: 10000; }
+    .brand-svg { height: 36px; width: auto; display: block; }
+
+    .nav-toggle { display: none; align-items: center; justify-content: center; gap: 8px; padding: 10px; border-radius: 10px; border: 1px solid var(--border); background: #12121a; box-shadow: 0 6px 16px rgba(0,0,0,0.35); color: var(--text); }
+    .icon-x { display: none; }
+    [data-nav-open="true"] .icon-bars { display: none; }
+    [data-nav-open="true"] .icon-x { display: inline; }
+
+    .primary-nav ul { list-style: none; display: flex; gap: clamp(12px, 2vw, 28px); padding: 0; margin: 0; align-items: center; }
+
     @media (max-width: 960px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .cards { grid-template-columns: 1fr; }
-      .principles { grid-template-columns: 1fr; }
-      .company-grid { grid-template-columns: 1fr; }
-      nav ul { display: none; }
-      .menu-btn { display: inline-flex; }
+      .nav-toggle { display: inline-flex; }
+      .primary-nav { position: absolute; top: calc(100% + 8px); left: 12px; right: 12px; background: color-mix(in oklab, var(--bg-elev) 95%, transparent); border: 1px solid var(--border); border-radius: 12px; padding: 12px; box-shadow: 0 14px 36px rgba(0,0,0,0.5); transform-origin: top; transform: scaleY(0.98); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .18s ease, transform .18s ease, visibility .18s; }
+      .primary-nav ul { flex-direction: column; gap: 12px; }
+      [data-nav-open="true"] .primary-nav { transform: scaleY(1); opacity: 1; visibility: visible; pointer-events: auto; }
+      .nav-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.35); }
+      .nav-backdrop[hidden] { display: none; }
     }
+
     @media (min-width: 961px) {
-      .menu-btn { display: none; }
+      .nav-toggle { display: none; }
+      .primary-nav { position: static; background: transparent; border: 0; border-radius: 0; padding: 0; box-shadow: none; transform: none; opacity: 1; visibility: visible; pointer-events: auto; }
       .cards { grid-template-columns: repeat(3, 1fr); }
     }
-    }
+
+  @media (max-width: 960px) {
+    /* 他セクションもスマホで折り返し */
+    .hero-grid { grid-template-columns: 1fr; }
+    .message.lyric { grid-template-columns: 1fr; }
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 960px) {
+    /* 強制上書き（スマホ時に1カラム） */
+    .principles { grid-template-columns: 1fr !important; }
+    .company-grid { grid-template-columns: 1fr !important; }
+  }
+
+  @media (min-width: 961px) {
+    /* デスクトップでは必ず3ペイン */
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)) !important; }
+  }
+
+  @media (min-width: 961px) {
+    .cards { grid-template-columns: repeat(3, minmax(0,1fr)) !important; gap: clamp(16px, 2.2vw, 22px) !important; }
+  }
+
   </style>
   <!-- Photo variables injected -->
   <style id="photo-vars">:root{
@@ -281,14 +351,14 @@
   --photo-s3: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80');
 }</style>
 
-  <!-- SVG defs: brand gradient & white glow filter -->
+  <!-- SVG defs: brand gradient & white glow filter（ロゴ差し替え用） -->
   <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;left:-9999px;">
     <defs>
       <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" stop-color="#00C8FF"/>
         <stop offset="100%" stop-color="#7A00FF"/>
       </linearGradient>
-      <!-- 白い光彩（glow） -->
+      <!-- 白い光彩（glow）: 黒ブラーではなく明るい外側光を想定 -->
       <filter id="whiteGlow" x="-50%" y="-50%" width="200%" height="200%">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
         <feColorMatrix in="blur" type="matrix"
@@ -324,13 +394,25 @@
 <body>
   <a class="skip-link" href="#main">コンテンツへスキップ</a>
 
-  <header>
+  <header class="site-header" data-nav-open="false">
     <div class="container header-inner">
       <a href="#top" class="brand" aria-label="coderless home">
         <img class="brand-svg" src="https://www.coderless.co.jp/assets/coderless_logo.svg" alt="coderless" />
       </a>
-      <button class="menu-btn btn" aria-expanded="false" aria-controls="site-nav">Menu</button>
-      <nav id="site-nav" aria-label="Primary">
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開閉">
+        <span class="sr-only">メニュー</span>
+        <svg class="icon-bars" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="6" width="18" height="2" rx="1"/>
+          <rect x="3" y="11" width="18" height="2" rx="1"/>
+          <rect x="3" y="16" width="18" height="2" rx="1"/>
+        </svg>
+        <svg class="icon-x" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 5 L19 19 M19 5 L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <nav id="site-nav" class="primary-nav" aria-label="メインメニュー">
         <ul>
           <li><a href="#message">メッセージ</a></li>
           <li><a href="#services">サービス</a></li>
@@ -340,6 +422,7 @@
         </ul>
       </nav>
     </div>
+    <div class="nav-backdrop" hidden></div>
   </header>
 
   <main id="main">
@@ -371,7 +454,7 @@
         </div>
         <article class="message lyric corner-accent">
           <div class="lyric-main stack-16">
-                        <h3 class="leadline">WHYからはじめる</h3>
+                        <h3 class="leadline">WHYから始める</h3>
             <div class="hairline" aria-hidden="true"></div>
             <p class="dropcap">生成AIは、仕事の価値観を大きく変える存在です。しかし、改善が作業レベルで止まってしまうようでは、単なるコストダウンと変わりません。私たちが変えたいのは、価値を生む構造そのものです。</p>
             <p>従来の分業では、戦略、計画、実装、運用がバラバラに走りがちでした。その上、実装工程に大きなウェイトが割かれ、戦略や計画が疎かになるシーンに数多く立ち会ってきました。</p>
@@ -393,7 +476,7 @@
       <div class="container">
         <div class="section-head">
           <h2 id="services-title">ご提供サービス</h2>
-          <div class="section-sub">Our Service</div>
+          <div class="section-sub">Our Services</div>
         </div>
         <div class="cards">
           <div class="card corner-accent">
@@ -434,7 +517,7 @@
           <div class="principle invert stack-16">
             <div class="kicker">Build with AI</div>
             <h3>AIファースト</h3>
-            <p>見えるところも見えないところも、AIを前提に設計します。</p>
+            <p>見えるところも見えないところも、AIを前提に設計する。</p>
           </div>
           <div class="principle invert stack-16">
             <div class="kicker">Autonomous</div>
@@ -506,28 +589,39 @@
   </footer>
 
   <script>
-    // 小さなインタラクション（モバイルメニュー）
-    const btn = document.querySelector('.menu-btn');
-    const nav = document.getElementById('site-nav');
-    if (btn && nav) {
-      const ul = nav.querySelector('ul');
-      // 初期化：モバイル→デスクトップ遷移の残存スタイルを除去
-      if (ul && ul.style) ul.style.removeProperty('display');
-      btn.addEventListener('click', () => {
-        const open = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!open));
-        nav.classList.toggle('is-open', !open);
-      });
-      // リサイズで復元（スクロール等でビューポートが変化した場合の保険）
-      const mq = window.matchMedia('(min-width: 961px)');
-      const handle = () => nav.classList.remove('is-open');
-      mq.addEventListener ? mq.addEventListener('change', handle) : window.addEventListener('resize', handle);
-    }
+    (() => {
+      const header = document.querySelector('.site-header');
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('site-nav');
+      const backdrop = document.querySelector('.nav-backdrop');
+      const mqDesktop = window.matchMedia('(min-width: 961px)');
 
-    // スムーズスクロール（ヘッダー分のオフセット調整＋モバイル時はメニューを閉じる）
-    (function(){
-      const headerEl = document.querySelector('header');
-      const offset = () => (headerEl ? headerEl.getBoundingClientRect().height + 10 : 0);
+      function setOpen(open) {
+        if (!header || !toggle) return;
+        header.dataset.navOpen = String(open);
+        toggle.setAttribute('aria-expanded', String(open));
+        if (backdrop) backdrop.hidden = !open;
+        document.body.style.overflow = open && !mqDesktop.matches ? 'hidden' : '';
+        if (open) {
+          const firstLink = nav?.querySelector('a');
+          firstLink && firstLink.focus({ preventScroll: true });
+        } else {
+          toggle.focus({ preventScroll: true });
+        }
+      }
+
+      toggle?.addEventListener('click', () => {
+        const open = toggle.getAttribute('aria-expanded') === 'true';
+        setOpen(!open);
+      });
+
+      backdrop?.addEventListener('click', () => setOpen(false));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+
+      (mqDesktop.addEventListener ? mqDesktop.addEventListener('change', () => setOpen(false)) : window.addEventListener('resize', () => setOpen(false)));
+
+      // スムーズスクロール（ヘッダー分オフセット）
+      const offset = () => (header ? header.getBoundingClientRect().height + 10 : 0);
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', (e) => {
           const id = a.getAttribute('href');
@@ -537,14 +631,11 @@
           e.preventDefault();
           const y = window.scrollY + target.getBoundingClientRect().top - offset();
           window.scrollTo({ top: y, behavior: 'smooth' });
-          // モバイルメニューが開いていたら閉じる
-          const nav = document.getElementById('site-nav');
-          const btn = document.querySelector('.menu-btn');
-          if (nav) nav.classList.remove('is-open');
-          if (btn) btn.setAttribute('aria-expanded','false');
+          setOpen(false);
         });
       });
     })();
   </script>
+    
 </body>
 </html>
