@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NRD2DB9B');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://source.unsplash.com">
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preload" as="image" href="https://source.unsplash.com/1600x900/?analytics,marketing">
+  <title>フォーム拡張ライブラリ | Account Engagement</title>
+  <meta name="description" content="Salesforceキャンペーンで広告効果を受注まで可視化。分断された計測をSalesforceに統合し、B2B MAに最適化したフォーム拡張ライブラリです。" />
+  <meta name="color-scheme" content="dark light">
+  <meta property="og:title" content="フォーム拡張ライブラリ | Account Engagement" />
+  <meta property="og:description" content="Salesforceキャンペーンで広告効果を受注まで可視化。B2B MAに最適化したフォーム拡張ライブラリ。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.coderless.co.jp/aeformlib" />
+  <meta property="og:image" content="https://www.coderless.co.jp/assets/ogp.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://www.coderless.co.jp/aeformlib">
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0" />
+  <style>
+    .ae-hero {
+      position: relative;
+      overflow: hidden;
+    }
+    .ae-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(600px 260px at 80% 10%, rgba(74, 74, 255, 0.22), transparent 65%),
+                  radial-gradient(520px 220px at 10% 30%, rgba(0, 200, 255, 0.18), transparent 60%);
+      pointer-events: none;
+    }
+    .ae-hero .container {
+      position: relative;
+      z-index: 1;
+    }
+    .ae-hero-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.45);
+    }
+    .ae-hero-panel h4 {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .ae-hero-panel ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .ae-hero-panel li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+    .ae-hero-panel li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent0), var(--accent1));
+      box-shadow: 0 0 10px rgba(68, 200, 255, 0.6);
+      flex: 0 0 auto;
+    }
+    .ae-visual {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.5);
+    }
+    .ae-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.45));
+    }
+    .ae-signal {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .ae-signal .card {
+      padding: 16px;
+    }
+    .flow-diagram {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+      width: 100%;
+      max-width: 100%;
+    }
+    .flow-step {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      padding: 12px 12px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.35);
+      min-width: 0;
+      word-break: break-word;
+    }
+    .flow-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .flow-icon {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      color: var(--accent0);
+      text-shadow: 0 0 10px rgba(68, 200, 255, 0.5);
+    }
+    .flow-title { font-weight: 900; }
+    .flow-meta { margin-top: 6px; font-size: 12px; color: var(--muted); }
+    .flow-arrow {
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-weight: 900;
+      opacity: 0.9;
+      height: 18px;
+    }
+    .flow-arrow::before { content: "↓"; }
+    .flow-before .flow-step.is-warning {
+      border-color: color-mix(in oklab, #ff9f43 65%, var(--border));
+      background: linear-gradient(180deg, rgba(255,179,71,0.18), rgba(255,255,255,0.02));
+    }
+    .flow-after .flow-step.is-success {
+      border-color: color-mix(in oklab, var(--accent0) 55%, var(--accent1) 55%);
+      background: linear-gradient(180deg, rgba(68,200,255,0.16), rgba(255,255,255,0.02));
+    }
+    .flow-step.is-warning .flow-meta { color: #ffb347; font-weight: 900; }
+    .flow-step.is-success .flow-meta { color: color-mix(in oklab, var(--accent0) 70%, #fff); font-weight: 900; }
+    .flow-points {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .flow-points li { margin: 6px 0; }
+    .grid-2 > * { min-width: 0; }
+    .flow-footnote {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 960px) {
+      .ae-hero .container { grid-template-columns: 1fr; }
+      .ae-signal { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NRD2DB9B"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <a class="skip-link" href="#main">コンテンツへスキップ</a>
+
+  <header class="site-header" data-nav-open="false">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand" aria-label="coderless home">
+        <img class="brand-svg" src="https://www.coderless.co.jp/assets/coderless_logo.svg" alt="coderless" />
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開閉">
+        <span class="sr-only">メニュー</span>
+        <svg class="icon-bars" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="6" width="18" height="2" rx="1"/>
+          <rect x="3" y="11" width="18" height="2" rx="1"/>
+          <rect x="3" y="16" width="18" height="2" rx="1"/>
+        </svg>
+        <svg class="icon-x" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 5 L19 19 M19 5 L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <nav id="site-nav" class="primary-nav" aria-label="メインメニュー">
+        <ul>
+          <li><a href="../index.html#message">メッセージ</a></li>
+          <li><a href="../index.html#services">サービス</a></li>
+          <li><a href="../index.html#products">製品</a></li>
+          <li><a href="../index.html#principles">行動原則</a></li>
+          <li><a href="../index.html#company">会社情報</a></li>
+          <li><a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener">ご相談</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="nav-backdrop" hidden></div>
+  </header>
+
+  <main id="main">
+    <section class="hero ae-hero">
+      <div class="container hero-grid">
+        <div class="readable stack-16">
+          <div class="eyebrow" data-edit-id="aeEyebrow">B2B Marketing Attribution</div>
+          <h1 data-edit-id="aeTitle">フォーム拡張ライブラリ</h1>
+          <p class="lead" data-edit-id="aeLead">広告効果を流入〜受注までEnd to Endで分析するための、Account Engagement フォーム拡張ライブラリです。Salesforceキャンペーンへ統合した分析で、広告効果を何倍にも高めます。</p>
+          <div class="cta-row">
+            <a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener" data-edit-id="aeCtaButtonText" data-edit-link="contactForm">ご利用相談</a>
+          </div>
+        </div>
+        <div class="stack-16">
+          <figure class="ae-visual" aria-label="B2B marketing analytics" style="background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; min-height: 320px;"></figure>
+            <div class="ae-hero-panel">
+              <h4 data-edit-id="aeOutcomesHeading">Key Outcomes</h4>
+            <ul>
+                <li data-edit-id="aeOutcome1">ウェブ広告の効果を何倍にも高める</li>
+                <li data-edit-id="aeOutcome2">UTMパラメータをそのままフォームへ連携</li>
+                <li data-edit-id="aeOutcome3">CRM/MAの標準機能を活かすシンプル設計</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section class="section-alt" aria-labelledby="value-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="value-title" data-edit-id="aeValueTitle">得られる価値</h2>
+          <div class="section-sub">Value First</div>
+        </div>
+        <div class="ae-signal">
+          <div class="card corner-accent">
+              <span class="pill">End-to-End</span>
+            <h3 data-edit-id="aeValue1Title">Salesforceで受注まで可視化</h3>
+            <p data-edit-id="aeValue1Body">Salesforceキャンペーンを起点に、広告効果を受注まで追える状態を作ります。</p>
+          </div>
+          <div class="card corner-accent">
+              <span class="pill">Unified</span>
+            <h3 data-edit-id="aeValue2Title">分断された計測を完全統合</h3>
+            <p data-edit-id="aeValue2Body">これまでGoogle Analyticsなどに分散していた効果測定をSalesforceへ集約します。</p>
+          </div>
+          <div class="card corner-accent">
+              <span class="pill">B2B Focus</span>
+            <h3 data-edit-id="aeValue3Title">B2B MAに最適化</h3>
+            <p data-edit-id="aeValue3Body">EC向けの汎用的な解析と違い、B2B商材の商談分析に最適化できます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="compare-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="compare-title" data-edit-id="aeCompareTitle">従来との比較</h2>
+          <div class="section-sub">Before / After</div>
+        </div>
+        <div class="grid-2">
+          <div class="card corner-accent">
+            <span class="pill">従来</span>
+            <h3 data-edit-id="aeCompareBeforeTitle">ページ遷移でパラメータが欠落</h3>
+            <div class="flow-diagram flow-before" role="img" aria-label="従来フロー。LPに訪問（UTMあり）→ 申し込みフォーム（UTM脱落）→ Account Engagementで初回コンバージョンのみ保存。">
+              <div class="flow-step">
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">ads_click</span>
+                  <div class="flow-title">LPに訪問</div>
+                </div>
+                <div class="flow-meta">UTMあり</div>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-step is-warning">
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">description</span>
+                  <div class="flow-title">申し込みフォーム</div>
+                </div>
+                <div class="flow-meta">UTM脱落</div>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-step">
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">analytics</span>
+                  <div class="flow-title">Account Engagement</div>
+                </div>
+                <div class="flow-meta">初回コンバージョンのみ保存</div>
+              </div>
+            </div>
+            <ul class="flow-points">
+              <li data-edit-id="aeBeforePoint1"><strong>UTMが途中で欠落</strong>し、施策評価が不正確になる</li>
+              <li data-edit-id="aeBeforePoint2">AE側では<strong>初回CVに偏った保存</strong>になりがち</li>
+              <li data-edit-id="aeBeforePoint3">対策として<strong>LPごとにフォーム増殖</strong> or <strong>GA等で後追い分析</strong>が必要</li>
+            </ul>
+          </div>
+          <div class="card corner-accent">
+            <span class="pill">フォーム拡張ライブラリ</span>
+            <h3 data-edit-id="aeCompareAfterTitle">ブラウザに一旦格納してフォームに連携</h3>
+            <div class="flow-diagram flow-after" role="img" aria-label="フォーム拡張ライブラリ利用時フロー。LPに訪問（UTMあり）→ いろいろなページを閲覧 → 申し込みフォーム（UTMを引き継ぎ）→ Account Engagementの項目に格納 → 自動化でキャンペーンへ連携可能。">
+              <div class="flow-step">
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">ads_click</span>
+                  <div class="flow-title">LPに訪問</div>
+                </div>
+                <div class="flow-meta">UTMあり</div>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-step">
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">travel_explore</span>
+                  <div class="flow-title">いろいろなページ</div>
+                </div>
+                <div class="flow-meta">閲覧・検討</div>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-step is-success">
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">description</span>
+                  <div class="flow-title">申し込みフォーム</div>
+                </div>
+                <div class="flow-meta">UTMを引き継ぎ</div>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-step">
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">analytics</span>
+                  <div class="flow-title">Account Engagement</div>
+                </div>
+                <div class="flow-meta">項目に格納</div>
+              </div>
+              <div class="flow-arrow" aria-hidden="true"></div>
+              <div class="flow-step is-success">
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">hub</span>
+                  <div class="flow-title">Salesforce</div>
+                </div>
+                <div class="flow-meta">自動化でキャンペーン連携</div>
+              </div>
+            </div>
+            <ul class="flow-points">
+              <li data-edit-id="aeAfterPoint1"><strong>UTMを確実に引き継ぎ</strong>、広告効果を受注まで追える</li>
+              <li data-edit-id="aeAfterPoint2"><strong>Account Engagementの項目</strong>に格納し、Salesforceへ統合</li>
+              <li data-edit-id="aeAfterPoint3">自動化で<strong>キャンペーン投入/ルール分岐</strong>まで繋げられる</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="why-title" data-edit-id="aeWhyTitle">なぜ重要なのか</h2>
+          <div class="section-sub">Why It Matters</div>
+        </div>
+        <div class="grid-2">
+          <div class="stack-16">
+            <p data-edit-id="aeWhyP1">B2CのECサイト等の場合は、広告流入から購買までが一直線で比較的シンプルです。</p>
+            <p data-edit-id="aeWhyP2">B2BではSalesforce/Account EngagementなどのCRM/MAで商談受注まで長期に渡って効果分析を行いますので、B2Cの分析ツールが使えません。</p>
+            <p data-edit-id="aeWhyP3">このライブラリでは、広告流入のランディングを確実にMAに伝え、Salesforceなどのキャンペーンを通じて、広告等の動線別の効果測定を可能にします。</p>
+          </div>
+            <div class="media corner-accent" aria-hidden="true" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80');"></div>
+        </div>
+      </div>
+    </section>
+
+      <section class="section-alt" aria-labelledby="fit-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="fit-title" data-edit-id="aeFitTitle">こんなチームに最適</h2>
+          <div class="section-sub">Fit</div>
+        </div>
+        <div class="grid-2">
+          <div class="stack-16">
+            <p data-edit-id="aeFitL1">Salesforceキャンペーンで正確に効果測定したい。</p>
+            <p data-edit-id="aeFitL2">複数LP・フォームでUTMの欠落が発生している。</p>
+            <p data-edit-id="aeFitL3">B2Bのタッチポイントを受注まで追い切れない。</p>
+          </div>
+          <div class="stack-16">
+            <p data-edit-id="aeFitR1">GAなどのツールとSalesforceが分断され、統合が進まない。</p>
+            <p data-edit-id="aeFitR2">実装負荷を抑えて改善したい。</p>
+            <p data-edit-id="aeFitR3">マーケ運用を属人化させたくない。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section aria-labelledby="flow-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="flow-title" data-edit-id="aeFeaturesTitle">特徴</h2>
+            <div class="section-sub">Highlights</div>
+        </div>
+          <div class="cards">
+          <div class="card corner-accent">
+              <span class="pill">UTM</span>
+            <h3 data-edit-id="aeFeat1Title">UTM欠落を防ぎ確実に引き継ぐ</h3>
+            <p data-edit-id="aeFeat1Body">ページ遷移で失われがちなパラメータを、フォーム送信まで保持します。</p>
+          </div>
+          <div class="card corner-accent">
+              <span class="pill">GTM</span>
+            <h3 data-edit-id="aeFeat2Title">実装はGTMで簡単</h3>
+            <p data-edit-id="aeFeat2Body">既存サイトに手を入れず、短時間で導入できる設計です。</p>
+          </div>
+          <div class="card corner-accent">
+              <span class="pill">Custom</span>
+            <h3 data-edit-id="aeFeat3Title">UTM以外のパラメータも継承</h3>
+            <p data-edit-id="aeFeat3Body">広告タイプや商談区分など、独自のパラメータもフォームに引き継げます。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section class="company section-alt" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-box invert-box stack-16">
+        <h3 id="cta-title" style="margin:0" data-edit-id="aeCtaTitle">Salesforce / Account Engagement でウェブ広告の効果を爆上げしたいなら！</h3>
+        <p style="margin:0" data-edit-id="aeCtaBody">Web改修からキャンペーン設計・導入まで、我々がお手伝いします。</p>
+          <div>
+          <a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener" data-edit-id="aeCtaButtonText2" data-edit-link="contactForm">ご利用相談</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" role="contentinfo">
+      <small>© 2025 coderless inc. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script src="../assets/scripts.js"></script>
+</body>
+</html>

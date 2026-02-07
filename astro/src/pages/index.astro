@@ -11,7 +11,7 @@ const contentJson = JSON.stringify(content);
 <html
   lang="ja"
   dir="ltr"
-  style={`--photo-hero: ${cssVars['--photo-hero'] || "url('')"}; --photo-s1: ${cssVars['--photo-s1'] || "url('')"}; --photo-s2: ${cssVars['--photo-s2'] || "url('')"}; --photo-s3: ${cssVars['--photo-s3'] || "url('')"};`}
+  style={`--photo-hero: ${cssVars['--photo-hero'] || "url('')"}; --photo-s1: ${cssVars['--photo-s1'] || "url('')"}; --photo-s2: ${cssVars['--photo-s2'] || "url('')"}; --photo-s3: ${cssVars['--photo-s3'] || "url('')"}; --photo-s4: ${cssVars['--photo-s4'] || "url('')"};`}
 >
   <head>
     <!-- Google Tag Manager -->
@@ -110,6 +110,7 @@ const contentJson = JSON.stringify(content);
           <ul>
             <li><a href="#message" data-edit-id="navMessage" set:html={text.navMessage}></a></li>
             <li><a href="#services" data-edit-id="navServices" set:html={text.navServices}></a></li>
+            <li><a href="#products" data-edit-id="navProducts" set:html={text.navProducts}></a></li>
             <li><a href="#principles" data-edit-id="navPrinciples" set:html={text.navPrinciples}></a></li>
             <li><a href="#company" data-edit-id="navCompany" set:html={text.navCompany}></a></li>
             <li><a class="nav-cta" href={links.contactForm} target="_blank" rel="noopener" data-edit-id="navCtaText" data-edit-link="contactForm" set:html={text.navCtaText}></a></li>
@@ -185,12 +186,32 @@ const contentJson = JSON.stringify(content);
               <p data-edit-id="service2Desc" set:html={text.service2Desc}></p>
               <div class="media photo1" aria-hidden="true"></div>
             </div>
-            <div class="card corner-accent">
+            <a class="card corner-accent card-link" href="/marketing/" aria-label="マーケティング支援のサービス詳細を見る">
               <span class="pill" data-edit-id="service3Pill" set:html={text.service3Pill}></span>
               <h3 data-edit-id="service3Title" set:html={text.service3Title}></h3>
               <p data-edit-id="service3Desc" set:html={text.service3Desc}></p>
-              <div class="media photo1" aria-hidden="true"></div>
-            </div>
+              <div class="card-link-cta" aria-hidden="true">DETAILS</div>
+              <div class="media photo1" aria-hidden="true" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80');"></div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PRODUCTS ===== -->
+      <section id="products" aria-labelledby="products-title">
+        <div class="container">
+          <div class="section-head">
+            <h2 id="products-title" data-edit-id="productTitle" set:html={text.productTitle}></h2>
+            <div class="section-sub" data-edit-id="productSub" set:html={text.productSub}></div>
+          </div>
+          <div class="cards product-cards">
+            <a class="card corner-accent card-link" href="/aeformlib/" aria-label="Account Engagement フォーム拡張ライブラリの詳細を見る">
+              <span class="pill" data-edit-id="product1Pill" set:html={text.product1Pill}></span>
+              <h3 data-edit-id="product1Title" set:html={text.product1Title}></h3>
+              <p data-edit-id="product1Desc" set:html={text.product1Desc}></p>
+              <div class="card-link-cta" aria-hidden="true">DETAILS</div>
+              <div class="media" aria-hidden="true" style="background-image: var(--photo-s4);"></div>
+            </a>
           </div>
         </div>
       </section>
@@ -301,6 +322,8 @@ const contentJson = JSON.stringify(content);
         <input type="url" data-edit-css-input data-edit-css-var="--photo-s2" placeholder="https://images..." />
         <label>サービス3画像URL</label>
         <input type="url" data-edit-css-input data-edit-css-var="--photo-s3" placeholder="https://images..." />
+        <label>製品画像URL</label>
+        <input type="url" data-edit-css-input data-edit-css-var="--photo-s4" placeholder="https://images..." />
         <label>変更内容（JSON）</label>
         <textarea rows="5" readonly id="editor-export"></textarea>
         <div class="row">
