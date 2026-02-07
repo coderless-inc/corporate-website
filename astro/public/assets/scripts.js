@@ -34,6 +34,7 @@
   const editorPanel = document.getElementById('editor-panel');
   const exportBox = document.getElementById('editor-export');
   const exportBtn = document.querySelector('[data-editor-export]');
+  const collapseBtn = document.querySelector('[data-editor-collapse]');
   const saveBtn = document.querySelector('[data-editor-save]');
   const resetBtn = document.querySelector('[data-editor-reset]');
   const linkInputs = document.querySelectorAll('[data-edit-link-input]');
@@ -48,6 +49,41 @@
     links: { ...(baseContent.links || {}) },
     cssVars: { ...(baseContent.cssVars || {}) }
   };
+  const inlineOnlyIds = new Set([
+    'heroSubtitle',
+    'heroLead',
+    'messageP1',
+    'messageP2',
+    'messageP3',
+    'messageP4',
+    'messageP5',
+    'ctaBody'
+  ]);
+
+  function normalizeInlineHtml(html) {
+    return html
+      .replace(/<div[^>]*>/gi, '<br>')
+      .replace(/<\/div>/gi, '')
+      .replace(/<p[^>]*>/gi, '')
+      .replace(/<\/p>/gi, '')
+      .replace(/(<br>\s*){2,}/gi, '<br>')
+      .replace(/^<br>/i, '');
+  }
+
+  function normalizeInlineState() {
+    let changed = false;
+    Object.keys(state.text).forEach((id) => {
+      if (!inlineOnlyIds.has(id)) return;
+      const raw = state.text[id];
+      if (typeof raw !== 'string') return;
+      const next = normalizeInlineHtml(raw);
+      if (next !== raw) {
+        state.text[id] = next;
+        changed = true;
+      }
+    });
+    return changed;
+  }
 
   function loadState() {
     try {
@@ -74,6 +110,7 @@
   }
 
   function applyState() {
+    const didNormalize = normalizeInlineState();
     editableEls.forEach(el => {
       const id = el.getAttribute('data-edit-id');
       if (id && state.text[id] != null) {
@@ -88,6 +125,7 @@
     Object.keys(state.cssVars).forEach(varName => {
       document.documentElement.style.setProperty(varName, state.cssVars[varName]);
     });
+    return didNormalize;
   }
 
   function refreshExportBox() {
@@ -112,7 +150,12 @@
     const id = el.getAttribute('data-edit-id');
     if (!id) return;
     el.addEventListener('input', () => {
-      state.text[id] = el.innerHTML;
+      const raw = el.innerHTML;
+      const next = inlineOnlyIds.has(id) ? normalizeInlineHtml(raw) : raw;
+      if (next !== raw) {
+        el.innerHTML = next;
+      }
+      state.text[id] = next;
       saveState();
       refreshExportBox();
     });
@@ -145,6 +188,12 @@
 
   editorToggle?.addEventListener('click', () => setEditMode(!editMode));
 
+  collapseBtn?.addEventListener('click', () => {
+    if (!editorPanel) return;
+    const isCollapsed = editorPanel.classList.toggle('is-collapsed');
+    collapseBtn.textContent = isCollapsed ? '展開' : '折りたたむ';
+  });
+
   exportBtn?.addEventListener('click', async () => {
     refreshExportBox();
     const text = exportBox ? exportBox.value : JSON.stringify(state, null, 2);
@@ -156,6 +205,9 @@
   });
 
   saveBtn?.addEventListener('click', async () => {
+    if (normalizeInlineState()) {
+      applyState();
+    }
     refreshExportBox();
     const payload = exportBox ? exportBox.value : JSON.stringify(state, null, 2);
     const originalLabel = saveBtn.textContent || 'ファイルに保存';
@@ -184,7 +236,16 @@
   });
 
   loadState();
-  applyState();
+  const didNormalize = applyState();
+  if (didNormalize) {
+    saveState();
+    refreshExportBox();
+  }
+
+  if (editorPanel && collapseBtn) {
+    editorPanel.classList.add('is-collapsed');
+    collapseBtn.textContent = '展開';
+  }
 
   // 初期値を入力に反映
   linkInputs.forEach(input => {

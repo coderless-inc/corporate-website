@@ -230,40 +230,38 @@ const contentJson = JSON.stringify(content);
             <div class="section-sub" data-edit-id="companySub" set:html={text.companySub}></div>
           </div>
           <div class="company-grid">
-            <div>
-              <table>
-                <tbody>
-                  <tr>
-                    <th scope="row" data-edit-id="companyLabelName" set:html={text.companyLabelName}></th>
-                    <td data-edit-id="companyValueName" set:html={text.companyValueName}></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" data-edit-id="companyLabelFounded" set:html={text.companyLabelFounded}></th>
-                    <td data-edit-id="companyValueFounded" set:html={text.companyValueFounded}></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" data-edit-id="companyLabelPresident" set:html={text.companyLabelPresident}></th>
-                    <td data-edit-id="companyValuePresident" set:html={text.companyValuePresident}></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" data-edit-id="companyLabelDirector1" set:html={text.companyLabelDirector1}></th>
-                    <td data-edit-id="companyValueDirector1" set:html={text.companyValueDirector1}></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" data-edit-id="companyLabelDirector2" set:html={text.companyLabelDirector2}></th>
-                    <td data-edit-id="companyValueDirector2" set:html={text.companyValueDirector2}></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" data-edit-id="companyLabelCapital" set:html={text.companyLabelCapital}></th>
-                    <td data-edit-id="companyValueCapital" set:html={text.companyValueCapital}></td>
-                  </tr>
-                  <tr>
-                    <th scope="row" data-edit-id="companyLabelAddress" set:html={text.companyLabelAddress}></th>
-                    <td data-edit-id="companyValueAddress" set:html={text.companyValueAddress}></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <table>
+              <tbody>
+                <tr>
+                  <th scope="row" data-edit-id="companyLabelName" set:html={text.companyLabelName}></th>
+                  <td data-edit-id="companyValueName" set:html={text.companyValueName}></td>
+                </tr>
+                <tr>
+                  <th scope="row" data-edit-id="companyLabelFounded" set:html={text.companyLabelFounded}></th>
+                  <td data-edit-id="companyValueFounded" set:html={text.companyValueFounded}></td>
+                </tr>
+                <tr>
+                  <th scope="row" data-edit-id="companyLabelPresident" set:html={text.companyLabelPresident}></th>
+                  <td data-edit-id="companyValuePresident" set:html={text.companyValuePresident}></td>
+                </tr>
+                <tr>
+                  <th scope="row" data-edit-id="companyLabelDirector1" set:html={text.companyLabelDirector1}></th>
+                  <td data-edit-id="companyValueDirector1" set:html={text.companyValueDirector1}></td>
+                </tr>
+                <tr>
+                  <th scope="row" data-edit-id="companyLabelDirector2" set:html={text.companyLabelDirector2}></th>
+                  <td data-edit-id="companyValueDirector2" set:html={text.companyValueDirector2}></td>
+                </tr>
+                <tr>
+                  <th scope="row" data-edit-id="companyLabelCapital" set:html={text.companyLabelCapital}></th>
+                  <td data-edit-id="companyValueCapital" set:html={text.companyValueCapital}></td>
+                </tr>
+                <tr>
+                  <th scope="row" data-edit-id="companyLabelAddress" set:html={text.companyLabelAddress}></th>
+                  <td data-edit-id="companyValueAddress" set:html={text.companyValueAddress}></td>
+                </tr>
+              </tbody>
+            </table>
             <div class="cta-box invert-box stack-16">
               <h3 style="margin:0" data-edit-id="ctaTitle" set:html={text.ctaTitle}></h3>
               <p style="margin:0" data-edit-id="ctaBody" set:html={text.ctaBody}></p>
@@ -284,24 +282,31 @@ const contentJson = JSON.stringify(content);
 
     <button class="editor-toggle" type="button" data-editor-toggle>編集モード</button>
     <div class="editor-panel" id="editor-panel" hidden>
-      <h4>ローカル編集</h4>
-      <p style="margin:0;font-size:12px;color:#b6bac3;">編集モード中は本文を直接クリックして変更できます。</p>
-      <label>お問い合わせリンク</label>
-      <input type="url" data-edit-link-input="contactForm" placeholder="https://example.com" />
-      <label>Hero画像URL</label>
-      <input type="url" data-edit-css-input data-edit-css-var="--photo-hero" placeholder="https://images..." />
-      <label>サービス1画像URL</label>
-      <input type="url" data-edit-css-input data-edit-css-var="--photo-s1" placeholder="https://images..." />
-      <label>サービス2画像URL</label>
-      <input type="url" data-edit-css-input data-edit-css-var="--photo-s2" placeholder="https://images..." />
-      <label>サービス3画像URL</label>
-      <input type="url" data-edit-css-input data-edit-css-var="--photo-s3" placeholder="https://images..." />
-      <label>変更内容（JSON）</label>
-      <textarea rows="5" readonly id="editor-export"></textarea>
-      <div class="row">
-        <button type="button" data-editor-save>ファイルに保存</button>
-        <button type="button" data-editor-export>JSONをコピー</button>
-        <button type="button" data-editor-reset>初期化</button>
+      <div class="panel-header">
+        <h4>ローカル編集</h4>
+        <div class="panel-actions">
+          <button type="button" data-editor-collapse>折りたたむ</button>
+          <button type="button" data-editor-save>保存</button>
+        </div>
+      </div>
+      <div class="panel-body">
+        <p style="margin:0;font-size:12px;color:#b6bac3;">編集モード中は本文を直接クリックして変更できます。</p>
+        <label>お問い合わせリンク</label>
+        <input type="url" data-edit-link-input="contactForm" placeholder="https://example.com" />
+        <label>Hero画像URL</label>
+        <input type="url" data-edit-css-input data-edit-css-var="--photo-hero" placeholder="https://images..." />
+        <label>サービス1画像URL</label>
+        <input type="url" data-edit-css-input data-edit-css-var="--photo-s1" placeholder="https://images..." />
+        <label>サービス2画像URL</label>
+        <input type="url" data-edit-css-input data-edit-css-var="--photo-s2" placeholder="https://images..." />
+        <label>サービス3画像URL</label>
+        <input type="url" data-edit-css-input data-edit-css-var="--photo-s3" placeholder="https://images..." />
+        <label>変更内容（JSON）</label>
+        <textarea rows="5" readonly id="editor-export"></textarea>
+        <div class="row">
+          <button type="button" data-editor-export>JSONをコピー</button>
+          <button type="button" data-editor-reset>初期化</button>
+        </div>
       </div>
     </div>
 

@@ -8,6 +8,8 @@ const contentPath = path.join(process.cwd(), 'src', 'data', 'content.json');
 const docsIndexPath = path.resolve(process.cwd(), '..', 'docs', 'index.html');
 const docsStylesPath = path.resolve(process.cwd(), '..', 'docs', 'assets', 'styles.css');
 
+const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const payload = await request.json();
@@ -39,14 +41,39 @@ export const POST: APIRoute = async ({ request }) => {
       cssVars: { ...existing.cssVars, ...(payload.cssVars || {}) }
     };
 
+    const inlineOnlyIds = new Set([
+      'heroSubtitle',
+      'heroLead',
+      'messageP1',
+      'messageP2',
+      'messageP3',
+      'messageP4',
+      'messageP5',
+      'ctaBody'
+    ]);
+    const normalizeInlineHtml = (value: string) => value
+      .replace(/<div[^>]*>/gi, '<br>')
+      .replace(/<\/div>/gi, '')
+      .replace(/<p[^>]*>/gi, '')
+      .replace(/<\/p>/gi, '')
+      .replace(/(<br>\s*){2,}/gi, '<br>')
+      .replace(/^<br>/i, '');
+    Object.keys(normalized.text).forEach((id) => {
+      if (!inlineOnlyIds.has(id)) return;
+      const raw = normalized.text[id];
+      if (typeof raw !== 'string') return;
+      normalized.text[id] = normalizeInlineHtml(raw);
+    });
+
     await writeFile(contentPath, JSON.stringify(normalized, null, 2), 'utf-8');
 
     try {
       let html = await readFile(docsIndexPath, 'utf-8');
       const textEntries = Object.entries(normalized.text);
       for (const [id, value] of textEntries) {
-        const regex = new RegExp(`(<[^>]*data-edit-id="${id}"[^>]*>)([\\s\\S]*?)(</[^>]+>)`);
-        html = html.replace(regex, (match, open, _inner, close) => `${open}${value}${close}`);
+        const safeId = escapeRegExp(id);
+        const regex = new RegExp(`(<([a-zA-Z0-9-]+)[^>]*data-edit-id="${safeId}"[^>]*>)([\\s\\S]*?)(</\\2>)`, 'i');
+        html = html.replace(regex, (match, open, _tag, _inner, close) => `${open}${value}${close}`);
       }
       const linkEntries = Object.entries(normalized.links);
       for (const [key, href] of linkEntries) {
