@@ -6,6 +6,7 @@ export const prerender = false;
 
 const contentPath = path.join(process.cwd(), 'src', 'data', 'content.json');
 const docsIndexPath = path.resolve(process.cwd(), '..', 'docs', 'index.html');
+const docsAeformlibPath = path.resolve(process.cwd(), '..', 'docs', 'aeformlib', 'index.html');
 const docsStylesPath = path.resolve(process.cwd(), '..', 'docs', 'assets', 'styles.css');
 
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -49,7 +50,28 @@ export const POST: APIRoute = async ({ request }) => {
       'messageP3',
       'messageP4',
       'messageP5',
-      'ctaBody'
+      'ctaBody',
+      // aeformlib page (keep contenteditable from introducing <div>)
+      'aeLead',
+      'aeOutcome1',
+      'aeOutcome2',
+      'aeOutcome3',
+      'aeValue1Body',
+      'aeValue2Body',
+      'aeValue3Body',
+      'aeWhyP1',
+      'aeWhyP2',
+      'aeWhyP3',
+      'aeFitL1',
+      'aeFitL2',
+      'aeFitL3',
+      'aeFitR1',
+      'aeFitR2',
+      'aeFitR3',
+      'aeFeat1Body',
+      'aeFeat2Body',
+      'aeFeat3Body',
+      'aeCtaBody'
     ]);
     const normalizeInlineHtml = (value: string) => value
       .replace(/<div[^>]*>/gi, '<br>')
@@ -68,19 +90,24 @@ export const POST: APIRoute = async ({ request }) => {
     await writeFile(contentPath, JSON.stringify(normalized, null, 2), 'utf-8');
 
     try {
-      let html = await readFile(docsIndexPath, 'utf-8');
-      const textEntries = Object.entries(normalized.text);
-      for (const [id, value] of textEntries) {
-        const safeId = escapeRegExp(id);
-        const regex = new RegExp(`(<([a-zA-Z0-9-]+)[^>]*data-edit-id="${safeId}"[^>]*>)([\\s\\S]*?)(</\\2>)`, 'i');
-        html = html.replace(regex, (match, open, _tag, _inner, close) => `${open}${value}${close}`);
-      }
-      const linkEntries = Object.entries(normalized.links);
-      for (const [key, href] of linkEntries) {
-        const regex = new RegExp(`(<[^>]*data-edit-link="${key}"[^>]*href=)(["'])([^"']*)(["'])`, 'g');
-        html = html.replace(regex, (match, prefix, quote, _old, suffix) => `${prefix}${quote}${href}${suffix}`);
-      }
-      await writeFile(docsIndexPath, html, 'utf-8');
+      const updateHtmlFile = async (filePath: string) => {
+        let html = await readFile(filePath, 'utf-8');
+        const textEntries = Object.entries(normalized.text);
+        for (const [id, value] of textEntries) {
+          const safeId = escapeRegExp(id);
+          const regex = new RegExp(`(<([a-zA-Z0-9-]+)[^>]*data-edit-id="${safeId}"[^>]*>)([\\s\\S]*?)(</\\2>)`, 'i');
+          html = html.replace(regex, (_match, open, _tag, _inner, close) => `${open}${value}${close}`);
+        }
+        const linkEntries = Object.entries(normalized.links);
+        for (const [key, href] of linkEntries) {
+          const regex = new RegExp(`(<[^>]*data-edit-link="${key}"[^>]*href=)(["'])([^"']*)(["'])`, 'g');
+          html = html.replace(regex, (match, prefix, quote, _old, suffix) => `${prefix}${quote}${href}${suffix}`);
+        }
+        await writeFile(filePath, html, 'utf-8');
+      };
+
+      await updateHtmlFile(docsIndexPath);
+      await updateHtmlFile(docsAeformlibPath);
     } catch (err) {
       // docs/index.html がない場合は無視
     }

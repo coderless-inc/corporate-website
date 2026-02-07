@@ -2,6 +2,7 @@
   "text": {
     "navMessage": "メッセージ",
     "navServices": "サービス",
+    "navProducts": "製品",
     "navPrinciples": "行動原則",
     "navCompany": "会社情報",
     "navCtaText": "ご相談",
@@ -33,6 +34,11 @@
     "service3Pill": "MarTech / CRM",
     "service3Title": "マーケティング支援",
     "service3Desc": "CRM/MA設計・運用の見直しから、マーケティングの“成果が見える”状態へ。御社の強みに即した方針を共に考えます。",
+    "productTitle": "製品",
+    "productSub": "Products",
+    "product1Pill": "Account Engagement",
+    "product1Title": "フォーム拡張ライブラリ",
+    "product1Desc": "計測の断絶をなくし、施策の成果を一気通貫で追える状態をつくるライブラリです。",
     "principlesTitle": "Coderlessの行動原則",
     "principlesSub": "Value / AI / Autonomous",
     "principle1Kicker": "Value-Driven",
@@ -63,7 +69,23 @@
     "ctaTitle": "お問い合わせ",
     "ctaBody": "まずは課題の整理からはじめましょう。「お困りのこと」と「実現したいこと」をお聞かせください。",
     "ctaButtonText": "ご相談",
-    "footerCopyright": "© 2025 coderless inc. All rights reserved."
+    "footerCopyright": "© 2025 coderless inc. All rights reserved.",
+    "aeLead": "広告効果を流入〜受注までEnd to Endで分析するための、Account Engagement フォーム拡張ライブラリです。Salesforceキャンペーンへ統合した分析で、広告効果を何倍にも高めます。",
+    "aeOutcome1": "ウェブ広告の効果を何倍にも高める",
+    "aeOutcome2": "UTMパラメータをそのままフォームへ連携",
+    "aeOutcome3": "CRM/MAの標準機能を活かすシンプル設計",
+    "aeValue2Body": "これまでGoogle Analyticsなどに分散していた効果測定をSalesforceへ集約します。",
+    "aeValue3Body": "EC向けの汎用的な解析と違い、B2B商材の商談分析に最適化できます。",
+    "aeCompareBeforeTitle": "ページ遷移でパラメータが欠落",
+    "aeCompareAfterTitle": "ブラウザに一旦格納してフォームに連携",
+    "aeWhyP1": "B2BではSalesforceなどのCRM/SFAで効果分析を行います。",
+    "aeWhyP2": "B2CのECサイト等の場合は、広告流入から購買までが一直線で比較的シンプルなため、B2Bではこれらの汎用ツールが使えません。",
+    "aeWhyP3": "このライブラリでは、広告流入のランディング状況を確実にMAに伝え、Salesforceなどのキャンペーンを通じて、広告別の効果測定を可能にします。",
+    "aeFitL3": "B2Bのタッチポイントを受注まで追い切れない。",
+    "aeCtaTitle": "Salesforceでウェブ広告の効果爆上げしたいなら！",
+    "aeCtaBody": "Web改修からキャンペーン設計・導入まで、我々がお手伝いします。",
+    "aeCtaButtonText2": "ご利用相談",
+    "aeCtaButtonText": "ご利用相談"
   },
   "links": {
     "contactForm": "https://forms.gle/zFeCRmxxMAehEFqu6"
@@ -72,6 +94,7 @@
     "--photo-hero": "url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80')",
     "--photo-s1": "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80')",
     "--photo-s2": "url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80')",
-    "--photo-s3": "url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80')"
+    "--photo-s3": "url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80')",
+    "--photo-s4": "url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80')"
   }
 }

@@ -57,7 +57,28 @@
     'messageP3',
     'messageP4',
     'messageP5',
-    'ctaBody'
+    'ctaBody',
+    // aeformlib page (keep contenteditable from introducing <div>)
+    'aeLead',
+    'aeOutcome1',
+    'aeOutcome2',
+    'aeOutcome3',
+    'aeValue1Body',
+    'aeValue2Body',
+    'aeValue3Body',
+    'aeWhyP1',
+    'aeWhyP2',
+    'aeWhyP3',
+    'aeFitL1',
+    'aeFitL2',
+    'aeFitL3',
+    'aeFitR1',
+    'aeFitR2',
+    'aeFitR3',
+    'aeFeat1Body',
+    'aeFeat2Body',
+    'aeFeat3Body',
+    'aeCtaBody'
   ]);
 
   function normalizeInlineHtml(html) {
