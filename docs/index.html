@@ -93,11 +93,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       <nav id="site-nav" class="primary-nav" aria-label="メインメニュー">
         <ul>
-          <li><a href="#message">メッセージ</a></li>
-          <li><a href="#services">サービス</a></li>
-          <li><a href="#principles">行動原則</a></li>
-          <li><a href="#company">会社情報</a></li>
-          <li><a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener">相談する</a></li>
+          <li><a href="#message" data-edit-id="navMessage">メッセージ</a></li>
+          <li><a href="#services" data-edit-id="navServices">サービス</a></li>
+          <li><a href="#principles" data-edit-id="navPrinciples">行動原則</a></li>
+          <li><a href="#company" data-edit-id="navCompany">会社情報</a></li>
+          <li><a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener" data-edit-id="navCtaText" data-edit-link="contactForm">ご相談</a></li>
         </ul>
       </nav>
     </div>
@@ -109,15 +109,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section id="top" class="hero">
       <div class="container hero-grid">
         <div class="readable">
-          <div class="eyebrow">Value First. Built with AI.</div>
+          <div class="eyebrow" data-edit-id="heroEyebrow">Value First. Built with AI.</div>
           <h1>
-            AIの潜在能力を引き出し、身近な価値へと転換する。<br/>
-            <small style="display:block;margin-top:8px;color:#cfd3dc;font-size: clamp(14px,1.8vw,16px);">単なるCoderにはならない Value-Drivenの会社 <strong>──それがcoderless</strong>です。</small>
+            <span data-edit-id="heroTitle">AIの潜在能力を、<br>あなたの価値へ。</span><br/>
+            <small style="display:block;margin-top:8px;color:#cfd3dc;font-size: clamp(14px,1.8vw,16px);" data-edit-id="heroSubtitle">Coderで終わらない Value-Drivenの会社 <strong>──それがCoderless</strong>です。</small>
           </h1>
-          <p class="lead">目的から逆算し、意思決定と実装を一体化。最小の実装で素早く学び、必要なリソースへ集中投資できるLeanな仕組みをつくります。</p>
+          <p class="lead" data-edit-id="heroLead">目的を軸に、思考と実装を一体化。<span style="font-size: clamp(16px, 2.2vw, 18px);">「考える」〜「作る」を高速に回転し、</span><span style="font-size: clamp(16px, 2.2vw, 18px);">従来の会社では実現できないLeanな仕組みを創造し</span><span style="font-size: clamp(16px, 2.2vw, 18px);">ます。</span></p>
           <div class="cta-row">
-            <a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener" aria-label="お問い合わせフォームへ">お問い合わせ</a>
-            <a class="btn" href="#message">私たちの考え方を見る</a>
+            <a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener" aria-label="お問い合わせフォームへ" data-edit-id="heroCtaPrimaryText" data-edit-link="contactForm">お問い合わせ</a>
+            <a class="btn" href="#message" data-edit-id="heroCtaSecondaryText">私たちの考え方</a>
           </div>
         </div>
         <figure class="sample-visual corner-accent" aria-label="Hero photo"></figure>
@@ -128,23 +128,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section id="message" aria-labelledby="message-title">
       <div class="container">
         <div class="section-head">
-          <h2 id="message-title">メッセージ</h2>
-          <div class="section-sub">“Why”からはじめる</div>
+          <h2 id="message-title" data-edit-id="messageTitle">メッセージ</h2>
+          <div class="section-sub" data-edit-id="messageSub">“Why”からはじめる</div>
         </div>
         <article class="message lyric corner-accent">
           <div class="lyric-main stack-16">
-                        <h3 class="leadline">WHYからはじめる</h3>
+            <h3 class="leadline" data-edit-id="messageLeadline">WHYからはじめる</h3>
             <div class="hairline" aria-hidden="true"></div>
-            <p class="dropcap">生成AIは、仕事の価値観を大きく変える存在です。しかし、改善が作業レベルで止まってしまうようでは、単なるコストダウンと変わりません。私たちが変えたいのは、価値を生む構造そのものです。</p>
-            <p>従来の分業では、戦略、計画、実装、運用がバラバラに走りがちでした。その上、実装工程に大きなウェイトが割かれ、戦略や計画が疎かになるシーンに数多く立ち会ってきました。</p>
-            <p>生成AIの潜在能力を引き出せば、順序を入れ替え、計画段階での試行錯誤の回数を増やし、分業そのものの体制を見直すことをも可能です。</p>
-            <p>coderlessは、目的から逆算し、意思決定と実装を一体化。最小の実装で素早く学び、必要なところに集中投資できるLeanな仕組みをつくります。</p>
-            <p>社名のとおり、私たちは“コーダーで終わらない”。AIと人の協働を前提に、ビジネス的な俯瞰の視点から現場の実装までを一気通貫で再構築します。</p>
+            <p class="dropcap" data-edit-id="messageP1">生成AIは、仕事の価値観を大きく変える存在です。しかし、改善が作業レベルで止まってしまうようでは、単なるコストダウンと変わりません。私たちが変えたいのは、価値を生む構造そのものです。</p>
+            <p data-edit-id="messageP2">これまでの業務経験で、戦略、計画、実装、運用がバラバラに走っている現場を数多く見てきました。ほとんどは、実装工程に大きなウェイトが割かれ、戦略や計画が行方不明になるケースです。</p>
+            <p data-edit-id="messageP3">作業だけをAIに依頼することは誰でもできます。生成AIの潜在能力を引き出すには、計画段階での目標設定と、それを実行する垂直統合の考え方が不可欠です。</p>
+            <p data-edit-id="messageP4">Coderlessは、実装だけを請け負う会社ではありません。なぜ（WHY）それが必要なのか、そこから真剣に取り組むことができる会社です。</p>
+            <p data-edit-id="messageP5">社名のとおり、私たちは“コーダーで終わらない”。AIによる利点を最大限活かし、ビジネス的な俯瞰の視点から現場レベルの実装まで一気通貫で、仕組みを構築します。</p>
           </div>
           <aside class="lyric-aside stack-16">
-            <blockquote class="pullquote">目的から逆算し、<br>意思決定と実装を一体化。</blockquote>
-            <blockquote class="pullquote">最小の実装で素早く学び、<br>必要なところに集中投資。</blockquote>
-            <blockquote class="pullquote">“コーダーで終わらない”。</blockquote>
+            <blockquote class="pullquote" data-edit-id="messageQuote1">目的（WHY）を軸に、<br>思考と実装を一体化。</blockquote>
+            <blockquote class="pullquote" data-edit-id="messageQuote2">AIの能力を引き出すには、<br>コンテキストが不可欠。</blockquote>
+            <blockquote class="pullquote" data-edit-id="messageQuote3">“コーダーで終わらない”<div>一気通貫で担う会社。</div></blockquote>
           </aside>
         </article>
       </div>
@@ -154,26 +154,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section id="services" class="section-alt" aria-labelledby="services-title">
       <div class="container">
         <div class="section-head">
-          <h2 id="services-title">ご提供サービス</h2>
-          <div class="section-sub">Our Services</div>
+          <h2 id="services-title" data-edit-id="servicesTitle">ご提供サービス</h2>
+          <div class="section-sub" data-edit-id="servicesSub">Our Services</div>
         </div>
         <div class="cards">
           <div class="card corner-accent">
-            <span class="pill">Strategy</span>
-            <h3>戦略策定</h3>
-            <p>事業目的から逆算し、KPI・組織・プロセスを設計。仮説→検証→学習のループを短く回すロードマップを共創します。</p>
+            <span class="pill" data-edit-id="service1Pill">Strategy</span>
+            <h3 data-edit-id="service1Title">戦略策定</h3>
+            <p data-edit-id="service1Desc">事業目的から逆算し、KPI・組織・プロセスを設計。仮説→検証→学習のループを短く回すロードマップを共創します。</p>
             <div class="media photo1" aria-hidden="true"></div>
           </div>
           <div class="card corner-accent">
-            <span class="pill">AI-Driven</span>
-            <h3>プログラム開発</h3>
-            <p>まずは御社の新規・既存プロジェクトをお聞かせください。AI開発によるメリットを弊社なりに考え、ご提案いたします。</p>
+            <span class="pill" data-edit-id="service2Pill">AI-Driven</span>
+            <h3 data-edit-id="service2Title">プログラム開発</h3>
+            <p data-edit-id="service2Desc">まずは御社の新規・既存プロジェクトをお聞かせください。AI開発によるメリットを弊社なりに考え、ご提案いたします。</p>
             <div class="media photo1" aria-hidden="true"></div>
           </div>
           <div class="card corner-accent">
-            <span class="pill">MarTech / CRM</span>
-            <h3>マーケティング支援</h3>
-            <p>CRM/MA設計と運用をはじめ、マーケティングの“成果が見える”状態へ。AI時代に即した方針を共に考えます。</p>
+            <span class="pill" data-edit-id="service3Pill">MarTech / CRM</span>
+            <h3 data-edit-id="service3Title">マーケティング支援</h3>
+            <p data-edit-id="service3Desc">CRM/MA設計と運用をはじめ、マーケティングの“成果が見える”状態へ。AI時代に即した方針を共に考えます。</p>
             <div class="media photo1" aria-hidden="true"></div>
           </div>
         </div>
@@ -184,24 +184,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section id="principles" aria-labelledby="principles-title">
       <div class="container">
         <div class="section-head">
-          <h2 id="principles-title">coderless inc.の行動原則</h2>
-          <div class="section-sub">Value / AI / Autonomous</div>
+          <h2 id="principles-title" data-edit-id="principlesTitle">Coderlessの行動原則</h2>
+          <div class="section-sub" data-edit-id="principlesSub">Value / AI / Autonomous</div>
         </div>
         <div class="principles">
           <div class="principle invert stack-16">
-            <div class="kicker">Value-Driven</div>
-            <h3>価値基点</h3>
-            <p>価値が基点にあり、作業を追わない。</p>
+            <div class="kicker" data-edit-id="principle1Kicker">Value-Driven</div>
+            <h3 data-edit-id="principle1Title">価値基点</h3>
+            <p data-edit-id="principle1Desc">価値が基点にあり、作業を追わない。</p>
           </div>
           <div class="principle invert stack-16">
-            <div class="kicker">Build with AI</div>
-            <h3>AIファースト</h3>
-            <p>見えるところも見えないところも、AIを前提に設計する。</p>
+            <div class="kicker" data-edit-id="principle2Kicker">Build with AI</div>
+            <h3 data-edit-id="principle2Title">AIファースト</h3>
+            <p data-edit-id="principle2Desc">見えるところも見えないところも、AIを前提に設計する。</p>
           </div>
           <div class="principle invert stack-16">
-            <div class="kicker">Autonomous</div>
-            <h3>自律航行</h3>
-            <p>小さな労力で最大の成果を。常にレバレッジの効いた仕組みを考える。</p>
+            <div class="kicker" data-edit-id="principle3Kicker">Autonomous</div>
+            <h3 data-edit-id="principle3Title">自律的な仕組み</h3>
+            <p data-edit-id="principle3Desc">誰かや何かに頼り続けなくていい自律的な仕組みを考える。</p>
           </div>
         </div>
       </div>
@@ -211,49 +211,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <section id="company" class="company" aria-labelledby="company-title">
       <div class="container">
         <div class="section-head">
-          <h2 id="company-title">会社情報</h2>
-          <div class="section-sub">Corporate Profile</div>
+          <h2 id="company-title" data-edit-id="companyTitle">会社情報</h2>
+          <div class="section-sub" data-edit-id="companySub">Corporate Profile</div>
         </div>
         <div class="company-grid">
           <div>
             <table>
               <tbody>
                 <tr>
-                  <th scope="row">商号</th>
-                  <td>Coderless株式会社<br>（コーダーレス株式会社）</td>
+                  <th scope="row" data-edit-id="companyLabelName">商号</th>
+                  <td data-edit-id="companyValueName">Coderless株式会社<br>（コーダーレス株式会社）</td>
                 </tr>
                 <tr>
-                  <th scope="row">設立</th>
-                  <td>2025年11月4日</td>
+                  <th scope="row" data-edit-id="companyLabelFounded">設立</th>
+                  <td data-edit-id="companyValueFounded">2025年11月4日</td>
                 </tr>
                 <tr>
-                  <th scope="row">代表取締役 社長</th>
-                  <td>土屋 敏彦</td>
+                  <th scope="row" data-edit-id="companyLabelPresident">代表取締役 社長</th>
+                  <td data-edit-id="companyValuePresident">土屋 敏彦</td>
                 </tr>
                 <tr>
-                  <th scope="row">代表取締役</th>
-                  <td>河野 俊之</td>
+                  <th scope="row" data-edit-id="companyLabelDirector1">代表取締役</th>
+                  <td data-edit-id="companyValueDirector1">河野 俊之</td>
                 </tr>
                 <tr>
-                  <th scope="row">取締役</th>
-                  <td>鈴木 邦章、木戸間 周平</td>
+                  <th scope="row" data-edit-id="companyLabelDirector2">取締役</th>
+                  <td data-edit-id="companyValueDirector2">鈴木 邦章、木戸間 周平</td>
                 </tr>
                 <tr>
-                  <th scope="row">資本金</th>
-                  <td>500万円</td>
+                  <th scope="row" data-edit-id="companyLabelCapital">資本金</th>
+                  <td data-edit-id="companyValueCapital">500万円</td>
                 </tr>
                 <tr>
-                  <th scope="row">所在地</th>
-                  <td>東京都渋谷区代々木2-20-19 新宿東洋ビル2F</td>
+                  <th scope="row" data-edit-id="companyLabelAddress">所在地</th>
+                  <td data-edit-id="companyValueAddress">東京都渋谷区代々木2-20-19 新宿東洋ビル2F</td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="cta-box invert-box stack-16">
-            <h3 style="margin:0">お問い合わせ</h3>
-            <p style="margin:0">まずは課題の整理から。すぐに入力できます。要件が固まっていなくても大丈夫です。現状と目的の2点を最初にお聞かせください。</p>
+            <h3 style="margin:0" data-edit-id="ctaTitle">お問い合わせ</h3>
+            <p style="margin:0" data-edit-id="ctaBody">まずは課題の整理からはじめましょう。「お困りのこと」と「実現したいこと」をお聞かせください。</p>
             <div>
-              <a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener">相談する</a>
+              <a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener" data-edit-id="ctaButtonText" data-edit-link="contactForm">ご相談</a>
             </div>
           </div>
         </div>
@@ -263,7 +263,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <footer>
     <div class="container" role="contentinfo">
-      <small>© 2025 coderless inc. All rights reserved.</small>
+      <small data-edit-id="footerCopyright">© 2025 coderless inc. All rights reserved.</small>
     </div>
   </footer>
 
