@@ -78,7 +78,33 @@
     'aeFeat1Body',
     'aeFeat2Body',
     'aeFeat3Body',
-    'aeCtaBody'
+    'aeCtaBody',
+    // marketing page
+    'mkHeroLead',
+    'mkPainIntro',
+    'mkPain1Copy',
+    'mkPain2Copy',
+    'mkPain3Copy',
+    'mkPain4Copy',
+    'mkPain5Copy',
+    'mkPain6Copy',
+    'mkVisualP1',
+    'mkVisualP2',
+    'mkVisualP3',
+    'mkScope1Desc',
+    'mkScope2Desc',
+    'mkScope3Desc',
+    'mkProcess1Desc',
+    'mkProcess2Desc',
+    'mkProcess3Desc',
+    'mkDeliver1',
+    'mkDeliver2',
+    'mkDeliver3',
+    'mkDeliver4',
+    'mkDeliver5',
+    'mkDeliver6',
+    'mkProductDesc',
+    'mkCtaBody'
   ]);
 
   function normalizeInlineHtml(html) {

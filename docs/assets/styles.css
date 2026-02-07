@@ -23,7 +23,7 @@
   --photo-s1: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80');
   --photo-s2: url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80');
   --photo-s3: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80');
-  --photo-s4: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80');
+  --photo-s4: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80');
 }
 
 /* ===== RESET & BASICS ===== */
@@ -255,6 +255,32 @@ box-shadow: 0 14px 40px rgba(0,0,0,0.20); }
 .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .principle { background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px; }
 .kicker { color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-size: 12px; font-weight: 800; }
+
+/* ===== MARKETING PAIN ===== */
+.pain-intro { color: var(--muted); max-width: 72ch; margin: 0 0 18px 0; font-size: clamp(14px, 1.6vw, 16px); }
+.pain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.pain-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow:
+    0 14px 30px rgba(4, 6, 20, 0.42),
+    0 0 0 1px rgba(160, 226, 255, 0.18),
+    0 0 36px rgba(160, 226, 255, 0.35),
+    0 0 64px rgba(160, 226, 255, 0.22);
+}
+.pain-kicker {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent0);
+  font-weight: 800;
+}
+.pain-copy { margin: 8px 0 0 0; font-weight: 700; }
+@media (max-width: 960px) {
+  .pain-grid { grid-template-columns: 1fr; }
+}
 
 /* ===== COMPANY ===== */
 .company { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }

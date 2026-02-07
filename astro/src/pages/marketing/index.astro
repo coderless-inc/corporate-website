@@ -1,4 +1,9 @@
 ---
+import content from '../../data/content.json';
+
+const text = content.text || {};
+const links = content.links || {};
+const contentJson = JSON.stringify(content);
 ---
 
 <!doctype html>
@@ -96,12 +101,12 @@
       <section class="hero">
         <div class="container hero-grid">
           <div class="readable stack-16">
-            <div class="eyebrow">Accelerate Marketing</div>
-            <h1>マーケティング支援</h1>
-            <p class="lead">CRM/MA設計・運用の見直しから、成果が見えるマーケティングへ。価値基点でデータと施策をつなげます。</p>
+            <div class="eyebrow" data-edit-id="mkHeroEyebrow" set:html={text.mkHeroEyebrow}></div>
+            <h1 data-edit-id="mkHeroTitle" set:html={text.mkHeroTitle}></h1>
+            <p class="lead" data-edit-id="mkHeroLead" set:html={text.mkHeroLead}></p>
             <div class="cta-row">
-              <a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener">相談する</a>
-              <a class="btn" href="/#services">サービス一覧に戻る</a>
+              <a class="nav-cta" href={links.contactForm} target="_blank" rel="noopener" data-edit-id="mkHeroCtaPrimary" data-edit-link="contactForm" set:html={text.mkHeroCtaPrimary}></a>
+              <a class="btn" href="/#services" data-edit-id="mkHeroCtaSecondary" set:html={text.mkHeroCtaSecondary}></a>
             </div>
           </div>
           <figure class="sample-visual corner-accent" aria-label="Marketing dashboard" style="background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;"></figure>
@@ -111,19 +116,34 @@
       <section class="section-alt" aria-labelledby="pain-title">
         <div class="container">
           <div class="section-head">
-            <h2 id="pain-title">こんなお悩みはありませんか</h2>
-            <div class="section-sub">Common Pain Points</div>
+            <h2 id="pain-title" data-edit-id="mkPainTitle" set:html={text.mkPainTitle}></h2>
+            <div class="section-sub" data-edit-id="mkPainSub" set:html={text.mkPainSub}></div>
           </div>
-          <div class="grid-2">
-            <div class="stack-16">
-              <p>施策は打っているが、どの施策が成果に効いているか分からない。</p>
-              <p>CRM/MAの運用が属人化し、分析から改善までが止まっている。</p>
-              <p>データはあるのに、意思決定に使える指標へ落とし込めていない。</p>
+          <p class="pain-intro" data-edit-id="mkPainIntro" set:html={text.mkPainIntro}></p>
+          <div class="pain-grid">
+            <div class="pain-card">
+              <div class="pain-kicker" data-edit-id="mkPain1Kicker" set:html={text.mkPain1Kicker}></div>
+              <p class="pain-copy" data-edit-id="mkPain1Copy" set:html={text.mkPain1Copy}></p>
             </div>
-            <div class="stack-16">
-              <p>リード獲得から受注までの流れが分断され、改善ポイントが見えない。</p>
-              <p>予算配分の最適化やLTV改善の打ち手が不足している。</p>
-              <p>現場にとって分かりやすいKPI設計ができていない。</p>
+            <div class="pain-card">
+              <div class="pain-kicker" data-edit-id="mkPain2Kicker" set:html={text.mkPain2Kicker}></div>
+              <p class="pain-copy" data-edit-id="mkPain2Copy" set:html={text.mkPain2Copy}></p>
+            </div>
+            <div class="pain-card">
+              <div class="pain-kicker" data-edit-id="mkPain3Kicker" set:html={text.mkPain3Kicker}></div>
+              <p class="pain-copy" data-edit-id="mkPain3Copy" set:html={text.mkPain3Copy}></p>
+            </div>
+            <div class="pain-card">
+              <div class="pain-kicker" data-edit-id="mkPain4Kicker" set:html={text.mkPain4Kicker}></div>
+              <p class="pain-copy" data-edit-id="mkPain4Copy" set:html={text.mkPain4Copy}></p>
+            </div>
+            <div class="pain-card">
+              <div class="pain-kicker" data-edit-id="mkPain5Kicker" set:html={text.mkPain5Kicker}></div>
+              <p class="pain-copy" data-edit-id="mkPain5Copy" set:html={text.mkPain5Copy}></p>
+            </div>
+            <div class="pain-card">
+              <div class="pain-kicker" data-edit-id="mkPain6Kicker" set:html={text.mkPain6Kicker}></div>
+              <p class="pain-copy" data-edit-id="mkPain6Copy" set:html={text.mkPain6Copy}></p>
             </div>
           </div>
         </div>
@@ -132,14 +152,14 @@
       <section aria-labelledby="visual-title">
         <div class="container">
           <div class="section-head">
-            <h2 id="visual-title">成果が見える状態へ</h2>
-            <div class="section-sub">Marketing Visibility</div>
+            <h2 id="visual-title" data-edit-id="mkVisualTitle" set:html={text.mkVisualTitle}></h2>
+            <div class="section-sub" data-edit-id="mkVisualSub" set:html={text.mkVisualSub}></div>
           </div>
           <div class="grid-2">
             <div class="stack-16">
-              <p>現場が迷わず意思決定できる状態をつくります。</p>
-              <p>施策の成果が可視化され、次の打ち手が明確になります。</p>
-              <p>経営と現場が同じ指標で会話できる状態へ整えます。</p>
+              <p data-edit-id="mkVisualP1" set:html={text.mkVisualP1}></p>
+              <p data-edit-id="mkVisualP2" set:html={text.mkVisualP2}></p>
+              <p data-edit-id="mkVisualP3" set:html={text.mkVisualP3}></p>
             </div>
             <div class="media corner-accent" aria-hidden="true" style="background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1200&q=80');"></div>
           </div>
@@ -149,24 +169,24 @@
       <section aria-labelledby="scope-title">
         <div class="container">
           <div class="section-head">
-            <h2 id="scope-title">支援内容</h2>
-            <div class="section-sub">What We Do</div>
+            <h2 id="scope-title" data-edit-id="mkScopeTitle" set:html={text.mkScopeTitle}></h2>
+            <div class="section-sub" data-edit-id="mkScopeSub" set:html={text.mkScopeSub}></div>
           </div>
           <div class="cards">
             <div class="card corner-accent">
-              <span class="pill">Strategy</span>
-              <h3>KPI設計とゴール整理</h3>
-              <p>事業目的と連動したKPIを定義し、優先すべき改善点を明確化します。</p>
+              <span class="pill" data-edit-id="mkScope1Pill" set:html={text.mkScope1Pill}></span>
+              <h3 data-edit-id="mkScope1Title" set:html={text.mkScope1Title}></h3>
+              <p data-edit-id="mkScope1Desc" set:html={text.mkScope1Desc}></p>
             </div>
             <div class="card corner-accent">
-              <span class="pill">CRM/MA</span>
-              <h3>CRM/MA設計・運用改善</h3>
-              <p>計測設計からセグメント設計、施策運用までを一気通貫で見直します。</p>
+              <span class="pill" data-edit-id="mkScope2Pill" set:html={text.mkScope2Pill}></span>
+              <h3 data-edit-id="mkScope2Title" set:html={text.mkScope2Title}></h3>
+              <p data-edit-id="mkScope2Desc" set:html={text.mkScope2Desc}></p>
             </div>
             <div class="card corner-accent">
-              <span class="pill">Analytics</span>
-              <h3>ダッシュボードと分析</h3>
-              <p>現場が意思決定できるダッシュボードと改善サイクルを構築します。</p>
+              <span class="pill" data-edit-id="mkScope3Pill" set:html={text.mkScope3Pill}></span>
+              <h3 data-edit-id="mkScope3Title" set:html={text.mkScope3Title}></h3>
+              <p data-edit-id="mkScope3Desc" set:html={text.mkScope3Desc}></p>
             </div>
           </div>
         </div>
@@ -175,24 +195,24 @@
       <section class="section-alt" aria-labelledby="process-title">
         <div class="container">
           <div class="section-head">
-            <h2 id="process-title">進め方</h2>
-            <div class="section-sub">Process</div>
+            <h2 id="process-title" data-edit-id="mkProcessTitle" set:html={text.mkProcessTitle}></h2>
+            <div class="section-sub" data-edit-id="mkProcessSub" set:html={text.mkProcessSub}></div>
           </div>
           <div class="cards">
             <div class="card corner-accent">
-              <span class="pill">Step 1</span>
-              <h3>現状ヒアリング</h3>
-              <p>目標・課題・運用体制を整理し、必要なデータを把握します。</p>
+              <span class="pill" data-edit-id="mkProcess1Pill" set:html={text.mkProcess1Pill}></span>
+              <h3 data-edit-id="mkProcess1Title" set:html={text.mkProcess1Title}></h3>
+              <p data-edit-id="mkProcess1Desc" set:html={text.mkProcess1Desc}></p>
             </div>
             <div class="card corner-accent">
-              <span class="pill">Step 2</span>
-              <h3>設計・優先度整理</h3>
-              <p>改善ロードマップを作成し、短期・中期の施策を明確にします。</p>
+              <span class="pill" data-edit-id="mkProcess2Pill" set:html={text.mkProcess2Pill}></span>
+              <h3 data-edit-id="mkProcess2Title" set:html={text.mkProcess2Title}></h3>
+              <p data-edit-id="mkProcess2Desc" set:html={text.mkProcess2Desc}></p>
             </div>
             <div class="card corner-accent">
-              <span class="pill">Step 3</span>
-              <h3>実装・運用支援</h3>
-              <p>計測・施策運用・分析を継続し、成果が出る運用へ伴走します。</p>
+              <span class="pill" data-edit-id="mkProcess3Pill" set:html={text.mkProcess3Pill}></span>
+              <h3 data-edit-id="mkProcess3Title" set:html={text.mkProcess3Title}></h3>
+              <p data-edit-id="mkProcess3Desc" set:html={text.mkProcess3Desc}></p>
             </div>
           </div>
         </div>
@@ -201,19 +221,19 @@
       <section aria-labelledby="deliver-title">
         <div class="container">
           <div class="section-head">
-            <h2 id="deliver-title">提供物・成果物</h2>
-            <div class="section-sub">Deliverables</div>
+            <h2 id="deliver-title" data-edit-id="mkDeliverTitle" set:html={text.mkDeliverTitle}></h2>
+            <div class="section-sub" data-edit-id="mkDeliverSub" set:html={text.mkDeliverSub}></div>
           </div>
           <div class="grid-2">
             <div class="stack-16">
-              <p>マーケティングKPI設計ドキュメント</p>
-              <p>CRM/MA運用フロー・施策設計</p>
-              <p>ダッシュボード定義・可視化設計</p>
+              <p data-edit-id="mkDeliver1" set:html={text.mkDeliver1}></p>
+              <p data-edit-id="mkDeliver2" set:html={text.mkDeliver2}></p>
+              <p data-edit-id="mkDeliver3" set:html={text.mkDeliver3}></p>
             </div>
             <div class="stack-16">
-              <p>改善ロードマップ（短期/中期）</p>
-              <p>運用レポートと改善提案</p>
-              <p>継続改善のための運用ガイド</p>
+              <p data-edit-id="mkDeliver4" set:html={text.mkDeliver4}></p>
+              <p data-edit-id="mkDeliver5" set:html={text.mkDeliver5}></p>
+              <p data-edit-id="mkDeliver6" set:html={text.mkDeliver6}></p>
             </div>
           </div>
         </div>
@@ -222,16 +242,16 @@
       <section class="section-alt" aria-labelledby="product-title">
         <div class="container">
           <div class="section-head">
-            <h2 id="product-title">関連製品</h2>
-            <div class="section-sub">Products</div>
+            <h2 id="product-title" data-edit-id="mkProductTitle" set:html={text.mkProductTitle}></h2>
+            <div class="section-sub" data-edit-id="mkProductSub" set:html={text.mkProductSub}></div>
           </div>
           <div class="cards product-cards">
             <a class="card corner-accent card-link" href="/aeformlib/" aria-label="Account Engagement フォーム拡張ライブラリの詳細を見る">
-              <span class="pill">Account Engagement</span>
-              <h3>フォーム拡張ライブラリ</h3>
-              <p>計測の断絶をなくし、施策の成果を一気通貫で追える状態をつくるライブラリです。</p>
-              <div class="card-link-cta" aria-hidden="true">DETAILS</div>
-              <div class="media" aria-hidden="true" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80');"></div>
+              <span class="pill" data-edit-id="mkProductPill" set:html={text.mkProductPill}></span>
+              <h3 data-edit-id="mkProductName" set:html={text.mkProductName}></h3>
+              <p data-edit-id="mkProductDesc" set:html={text.mkProductDesc}></p>
+              <div class="card-link-cta" aria-hidden="true" data-edit-id="mkProductCta" set:html={text.mkProductCta}></div>
+              <div class="media" aria-hidden="true" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80');"></div>
             </a>
           </div>
         </div>
@@ -240,10 +260,10 @@
       <section class="company section-alt" aria-labelledby="cta-title">
         <div class="container">
           <div class="cta-box invert-box stack-16">
-            <h3 id="cta-title" style="margin:0">まずは課題の整理から</h3>
-            <p style="margin:0">現在の状況を簡単に共有いただければ、最適な進め方をご提案します。</p>
+            <h3 id="cta-title" style="margin:0" data-edit-id="mkCtaTitle" set:html={text.mkCtaTitle}></h3>
+            <p style="margin:0" data-edit-id="mkCtaBody" set:html={text.mkCtaBody}></p>
             <div>
-              <a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener">ご相談</a>
+              <a class="nav-cta" href={links.contactForm} target="_blank" rel="noopener" data-edit-id="mkCtaButton" data-edit-link="contactForm" set:html={text.mkCtaButton}></a>
             </div>
           </div>
         </div>
@@ -252,10 +272,33 @@
 
     <footer>
       <div class="container" role="contentinfo">
-        <small>© 2025 coderless inc. All rights reserved.</small>
+        <small data-edit-id="mkFooter" set:html={text.mkFooter}></small>
       </div>
     </footer>
 
+    <button class="editor-toggle" type="button" data-editor-toggle>編集モード</button>
+    <div class="editor-panel" id="editor-panel" hidden>
+      <div class="panel-header">
+        <h4>ローカル編集</h4>
+        <div class="panel-actions">
+          <button type="button" data-editor-collapse>折りたたむ</button>
+          <button type="button" data-editor-save>保存</button>
+        </div>
+      </div>
+      <div class="panel-body">
+        <p style="margin:0;font-size:12px;color:#b6bac3;">編集モード中は本文を直接クリックして変更できます。</p>
+        <label>お問い合わせリンク</label>
+        <input type="url" data-edit-link-input="contactForm" placeholder="https://example.com" />
+        <label>変更内容（JSON）</label>
+        <textarea rows="5" readonly id="editor-export"></textarea>
+        <div class="row">
+          <button type="button" data-editor-export>JSONをコピー</button>
+          <button type="button" data-editor-reset>初期化</button>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>window.__CONTENT__ = {contentJson};</script>
     <script is:inline src="/assets/scripts.js"></script>
   </body>
 </html>

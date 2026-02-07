@@ -7,6 +7,7 @@ export const prerender = false;
 const contentPath = path.join(process.cwd(), 'src', 'data', 'content.json');
 const docsIndexPath = path.resolve(process.cwd(), '..', 'docs', 'index.html');
 const docsAeformlibPath = path.resolve(process.cwd(), '..', 'docs', 'aeformlib', 'index.html');
+const docsMarketingPath = path.resolve(process.cwd(), '..', 'docs', 'marketing', 'index.html');
 const docsStylesPath = path.resolve(process.cwd(), '..', 'docs', 'assets', 'styles.css');
 
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -71,7 +72,33 @@ export const POST: APIRoute = async ({ request }) => {
       'aeFeat1Body',
       'aeFeat2Body',
       'aeFeat3Body',
-      'aeCtaBody'
+      'aeCtaBody',
+      // marketing page
+      'mkHeroLead',
+      'mkPainIntro',
+      'mkPain1Copy',
+      'mkPain2Copy',
+      'mkPain3Copy',
+      'mkPain4Copy',
+      'mkPain5Copy',
+      'mkPain6Copy',
+      'mkVisualP1',
+      'mkVisualP2',
+      'mkVisualP3',
+      'mkScope1Desc',
+      'mkScope2Desc',
+      'mkScope3Desc',
+      'mkProcess1Desc',
+      'mkProcess2Desc',
+      'mkProcess3Desc',
+      'mkDeliver1',
+      'mkDeliver2',
+      'mkDeliver3',
+      'mkDeliver4',
+      'mkDeliver5',
+      'mkDeliver6',
+      'mkProductDesc',
+      'mkCtaBody'
     ]);
     const normalizeInlineHtml = (value: string) => value
       .replace(/<div[^>]*>/gi, '<br>')
@@ -108,6 +135,7 @@ export const POST: APIRoute = async ({ request }) => {
 
       await updateHtmlFile(docsIndexPath);
       await updateHtmlFile(docsAeformlibPath);
+      await updateHtmlFile(docsMarketingPath);
     } catch (err) {
       // docs/index.html がない場合は無視
     }

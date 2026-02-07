@@ -24,6 +24,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://www.coderless.co.jp/aeformlib">
   <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0" />
   <style>
     .ae-hero {
       position: relative;
@@ -114,6 +115,26 @@
       box-shadow: 0 10px 26px rgba(0,0,0,0.35);
       min-width: 0;
       word-break: break-word;
+    }
+    .flow-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .flow-icon {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      color: var(--accent0);
+      text-shadow: 0 0 10px rgba(68, 200, 255, 0.5);
     }
     .flow-title { font-weight: 900; }
     .flow-meta { margin-top: 6px; font-size: 12px; color: var(--muted); }
@@ -207,7 +228,7 @@
           </div>
         </div>
         <div class="stack-16">
-          <figure class="ae-visual" aria-label="B2B marketing dashboard" style="background: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; min-height: 320px;"></figure>
+          <figure class="ae-visual" aria-label="B2B marketing analytics" style="background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; min-height: 320px;"></figure>
             <div class="ae-hero-panel">
               <h4 data-edit-id="aeOutcomesHeading">Key Outcomes</h4>
             <ul>
@@ -258,17 +279,26 @@
             <h3 data-edit-id="aeCompareBeforeTitle">ページ遷移でパラメータが欠落</h3>
             <div class="flow-diagram flow-before" role="img" aria-label="従来フロー。LPに訪問（UTMあり）→ 申し込みフォーム（UTM脱落）→ Account Engagementで初回コンバージョンのみ保存。">
               <div class="flow-step">
-                <div class="flow-title">LPに訪問</div>
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">ads_click</span>
+                  <div class="flow-title">LPに訪問</div>
+                </div>
                 <div class="flow-meta">UTMあり</div>
               </div>
               <div class="flow-arrow" aria-hidden="true"></div>
               <div class="flow-step is-warning">
-                <div class="flow-title">申し込みフォーム</div>
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">description</span>
+                  <div class="flow-title">申し込みフォーム</div>
+                </div>
                 <div class="flow-meta">UTM脱落</div>
               </div>
               <div class="flow-arrow" aria-hidden="true"></div>
               <div class="flow-step">
-                <div class="flow-title">Account Engagement</div>
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">analytics</span>
+                  <div class="flow-title">Account Engagement</div>
+                </div>
                 <div class="flow-meta">初回コンバージョンのみ保存</div>
               </div>
             </div>
@@ -283,27 +313,42 @@
             <h3 data-edit-id="aeCompareAfterTitle">ブラウザに一旦格納してフォームに連携</h3>
             <div class="flow-diagram flow-after" role="img" aria-label="フォーム拡張ライブラリ利用時フロー。LPに訪問（UTMあり）→ いろいろなページを閲覧 → 申し込みフォーム（UTMを引き継ぎ）→ Account Engagementの項目に格納 → 自動化でキャンペーンへ連携可能。">
               <div class="flow-step">
-                <div class="flow-title">LPに訪問</div>
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">ads_click</span>
+                  <div class="flow-title">LPに訪問</div>
+                </div>
                 <div class="flow-meta">UTMあり</div>
               </div>
               <div class="flow-arrow" aria-hidden="true"></div>
               <div class="flow-step">
-                <div class="flow-title">いろいろなページ</div>
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">travel_explore</span>
+                  <div class="flow-title">いろいろなページ</div>
+                </div>
                 <div class="flow-meta">閲覧・検討</div>
               </div>
               <div class="flow-arrow" aria-hidden="true"></div>
               <div class="flow-step is-success">
-                <div class="flow-title">申し込みフォーム</div>
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">description</span>
+                  <div class="flow-title">申し込みフォーム</div>
+                </div>
                 <div class="flow-meta">UTMを引き継ぎ</div>
               </div>
               <div class="flow-arrow" aria-hidden="true"></div>
               <div class="flow-step">
-                <div class="flow-title">Account Engagement</div>
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">analytics</span>
+                  <div class="flow-title">Account Engagement</div>
+                </div>
                 <div class="flow-meta">項目に格納</div>
               </div>
               <div class="flow-arrow" aria-hidden="true"></div>
               <div class="flow-step is-success">
-                <div class="flow-title">Salesforce</div>
+                <div class="flow-header">
+                  <span class="flow-icon" aria-hidden="true">hub</span>
+                  <div class="flow-title">Salesforce</div>
+                </div>
                 <div class="flow-meta">自動化でキャンペーン連携</div>
               </div>
             </div>
@@ -325,9 +370,9 @@
         </div>
         <div class="grid-2">
           <div class="stack-16">
-            <p data-edit-id="aeWhyP1">B2BではSalesforceなどのCRM/SFAで効果分析を行います。</p>
-            <p data-edit-id="aeWhyP2">B2CのECサイト等の場合は、広告流入から購買までが一直線で比較的シンプルなため、B2Bではこれらの汎用ツールが使えません。</p>
-            <p data-edit-id="aeWhyP3">このライブラリでは、広告流入のランディング状況を確実にMAに伝え、Salesforceなどのキャンペーンを通じて、広告別の効果測定を可能にします。</p>
+            <p data-edit-id="aeWhyP1">B2CのECサイト等の場合は、広告流入から購買までが一直線で比較的シンプルです。</p>
+            <p data-edit-id="aeWhyP2">B2BではSalesforce/Account EngagementなどのCRM/MAで商談受注まで長期に渡って効果分析を行いますので、B2Cの分析ツールが使えません。</p>
+            <p data-edit-id="aeWhyP3">このライブラリでは、広告流入のランディングを確実にMAに伝え、Salesforceなどのキャンペーンを通じて、広告等の動線別の効果測定を可能にします。</p>
           </div>
             <div class="media corner-accent" aria-hidden="true" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1200&q=80');"></div>
         </div>
@@ -347,7 +392,7 @@
             <p data-edit-id="aeFitL3">B2Bのタッチポイントを受注まで追い切れない。</p>
           </div>
           <div class="stack-16">
-            <p data-edit-id="aeFitR1">GAなどのツールとSalesforceが分断されている。</p>
+            <p data-edit-id="aeFitR1">GAなどのツールとSalesforceが分断され、統合が進まない。</p>
             <p data-edit-id="aeFitR2">実装負荷を抑えて改善したい。</p>
             <p data-edit-id="aeFitR3">マーケ運用を属人化させたくない。</p>
           </div>
@@ -384,7 +429,7 @@
       <section class="company section-alt" aria-labelledby="cta-title">
       <div class="container">
         <div class="cta-box invert-box stack-16">
-        <h3 id="cta-title" style="margin:0" data-edit-id="aeCtaTitle">Salesforceでウェブ広告の効果爆上げしたいなら！</h3>
+        <h3 id="cta-title" style="margin:0" data-edit-id="aeCtaTitle">Salesforce / Account Engagement でウェブ広告の効果を爆上げしたいなら！</h3>
         <p style="margin:0" data-edit-id="aeCtaBody">Web改修からキャンペーン設計・導入まで、我々がお手伝いします。</p>
           <div>
           <a class="nav-cta" href="https://forms.gle/zFeCRmxxMAehEFqu6" target="_blank" rel="noopener" data-edit-id="aeCtaButtonText2" data-edit-link="contactForm">ご利用相談</a>
