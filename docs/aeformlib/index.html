@@ -170,6 +170,34 @@
       color: var(--muted);
       font-size: 14px;
     }
+    .ae-demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(14px, 2.2vw, 20px);
+    }
+    .ae-demo-shot {
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      box-shadow: 0 14px 32px rgba(0,0,0,0.35);
+    }
+    .ae-demo-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    .ae-demo-shot figcaption {
+      padding: 10px 12px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      background: rgba(11,11,16,0.55);
+    }
+    @media (max-width: 960px) {
+      .ae-demo-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 960px) {
       .ae-hero .container { grid-template-columns: 1fr; }
       .ae-signal { grid-template-columns: 1fr; }
@@ -358,6 +386,25 @@
               <li data-edit-id="aeAfterPoint3">自動化で<strong>キャンペーン投入/ルール分岐</strong>まで繋げられる</li>
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="demo-title">デモ画面（LP → フォーム）</h2>
+          <div class="section-sub">Parameter Inheritance Demo</div>
+        </div>
+        <div class="ae-demo-grid">
+          <figure class="ae-demo-shot">
+            <img src="../assets/aeformlib/sample_lp.png" alt="LP画面。URLにutm_source、utm_medium、utm_campaign、ad_typeが付与されている様子。">
+            <figcaption>1. LPにUTM/カスタムパラメータ付きで流入</figcaption>
+          </figure>
+          <figure class="ae-demo-shot">
+            <img src="../assets/aeformlib/sample_form.png" alt="フォーム画面。utm_source、utm_medium、campaign、ad_typeの項目に値が自動反映されている様子。">
+            <figcaption>2. フォームへ遷移後、項目へ自動反映</figcaption>
+          </figure>
         </div>
       </div>
     </section>

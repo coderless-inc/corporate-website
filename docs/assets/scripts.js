@@ -5,6 +5,34 @@
   const backdrop = document.querySelector('.nav-backdrop');
   const mqDesktop = window.matchMedia('(min-width: 961px)');
 
+  function isPrivateIpv4(hostname) {
+    const m = hostname.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/);
+    if (!m) return false;
+    const a = Number(m[1]);
+    const b = Number(m[2]);
+    if (a === 10) return true;
+    if (a === 192 && b === 168) return true;
+    if (a === 172 && b >= 16 && b <= 31) return true;
+    return false;
+  }
+
+  function isLocalDevHost(hostname) {
+    return hostname === 'localhost'
+      || hostname === '127.0.0.1'
+      || hostname === '::1'
+      || hostname.endsWith('.local')
+      || isPrivateIpv4(hostname);
+  }
+
+  if (isLocalDevHost(window.location.hostname)) {
+    window.dataLayer = window.dataLayer || [];
+    // Mark local traffic as debug/dev traffic for GA4 filtering.
+    window.dataLayer.push({ debug_mode: true });
+    if (typeof window.gtag === 'function') {
+      window.gtag('set', 'debug_mode', true);
+    }
+  }
+
   function setOpen(open) {
     if (!header || !toggle) return;
     header.dataset.navOpen = String(open);

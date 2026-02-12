@@ -12,8 +12,34 @@ const docsStylesPath = path.resolve(process.cwd(), '..', 'docs', 'assets', 'styl
 
 const escapeRegExp = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
+const isPrivateIpv4 = (hostname: string) => {
+  const m = hostname.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/);
+  if (!m) return false;
+  const a = Number(m[1]);
+  const b = Number(m[2]);
+  if (a === 10) return true;
+  if (a === 192 && b === 168) return true;
+  if (a === 172 && b >= 16 && b <= 31) return true;
+  return false;
+};
+
+const isEditorAllowedHost = (hostname: string) =>
+  hostname === 'localhost'
+  || hostname === '127.0.0.1'
+  || hostname === '::1'
+  || hostname.endsWith('.local')
+  || isPrivateIpv4(hostname);
+
 export const POST: APIRoute = async ({ request }) => {
   try {
+    const requestUrl = new URL(request.url);
+    if (!isEditorAllowedHost(requestUrl.hostname)) {
+      return new Response(JSON.stringify({ ok: false, error: 'editor disabled on this host' }), {
+        status: 403,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
     const payload = await request.json();
     if (!payload || typeof payload !== 'object') {
       return new Response(JSON.stringify({ ok: false, error: 'invalid payload' }), {

@@ -152,7 +152,8 @@
     "mkCtaBody": "まずは現状を教えてください！会話の中で御社で実現可能な道筋を探しましょう！",
     "mkCtaButton": "お気軽にご相談ください",
     "mkFooter": "© 2025 coderless inc. All rights reserved.",
-    "aeValue1Title": "広告投資を受注まで可視化"
+    "aeValue1Title": "広告投資を受注まで可視化",
+    "aeTitle": "フォーム拡張ライブラリ"
   },
   "links": {
     "contactForm": "https://forms.gle/zFeCRmxxMAehEFqu6"

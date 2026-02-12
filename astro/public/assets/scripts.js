@@ -5,6 +5,35 @@
   const backdrop = document.querySelector('.nav-backdrop');
   const mqDesktop = window.matchMedia('(min-width: 961px)');
 
+  function isPrivateIpv4(hostname) {
+    const m = hostname.match(/^(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})$/);
+    if (!m) return false;
+    const a = Number(m[1]);
+    const b = Number(m[2]);
+    if (a === 10) return true;
+    if (a === 192 && b === 168) return true;
+    if (a === 172 && b >= 16 && b <= 31) return true;
+    return false;
+  }
+
+  function isLocalDevHost(hostname) {
+    return hostname === 'localhost'
+      || hostname === '127.0.0.1'
+      || hostname === '::1'
+      || hostname.endsWith('.local')
+      || isPrivateIpv4(hostname);
+  }
+
+  const isLocalDev = isLocalDevHost(window.location.hostname);
+  if (isLocalDev) {
+    window.dataLayer = window.dataLayer || [];
+    // Mark local traffic as debug/dev traffic for GA4 filtering.
+    window.dataLayer.push({ debug_mode: true });
+    if (typeof window.gtag === 'function') {
+      window.gtag('set', 'debug_mode', true);
+    }
+  }
+
   function setOpen(open) {
     if (!header || !toggle) return;
     header.dataset.navOpen = String(open);
@@ -41,8 +70,10 @@
   const cssInputs = document.querySelectorAll('[data-edit-css-input]');
   const editableEls = document.querySelectorAll('[data-edit-id]');
 
+  const editorEnabled = isLocalDevHost(window.location.hostname);
   const stateKey = 'coderlessEditorState';
   let editMode = false;
+  if (editorEnabled) {
   const baseContent = (typeof window !== 'undefined' && window.__CONTENT__) ? window.__CONTENT__ : {};
   const state = {
     text: { ...(baseContent.text || {}) },
@@ -307,6 +338,10 @@
     const current = state.cssVars[varName] || getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
     if (current) input.value = current.replace(/^url\(["']?/, '').replace(/["']?\)$/, '');
   });
+  } else {
+    editorToggle?.remove();
+    editorPanel?.remove();
+  }
 
   // スムーズスクロール（ヘッダー分オフセット）
   const offset = () => (header ? header.getBoundingClientRect().height + 10 : 0);
